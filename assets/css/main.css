@@ -5,3 +5,8 @@
 .active{
   background-color: blueviolet;
 }
+
+/* notes css */
+.addBtnNotes img{
+  width:50px;
+}

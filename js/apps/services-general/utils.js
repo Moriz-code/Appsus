@@ -1,4 +1,11 @@
-export function getRandomID() {
+
+
+
+export default{
+  getRandomID
+}
+
+function getRandomID(){
   let letters = '1234567890poiiytreqwasdfghjklmnbvcxxssersgyushquiz';
   let id = '';
   for (let i = 0; i < 10; i++) {
@@ -7,3 +14,5 @@ export function getRandomID() {
   }
   return id;
 }
+
+
