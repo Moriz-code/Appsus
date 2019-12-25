@@ -1,6 +1,3 @@
-<<<<<<< HEAD
- Home from './pages/Home.jsx'
-=======
 import Home from './pages/Home.jsx'
 import NavBar from './js/cmps-general/NavBar.jsx'
 import NotesApp from './js/apps/Notes/NotesApp.jsx'
@@ -13,12 +10,11 @@ const { createBrowserHistory } = History
 const history = createBrowserHistory()
 
 
->>>>>>> 6fe9acf32377278c6a627909169fd80df79d9b7a
 class App extends React.Component {
 
-    render() {
-        return (
-         <main>
+  render() {
+    return (
+      <main>
         <Router history={history}>
           <NavBar></NavBar>
           <Switch>
@@ -30,12 +26,12 @@ class App extends React.Component {
           </Switch>
         </Router>
       </main>
-        )
-    }
+    )
+  }
 }
 
 
 ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
+  <App />,
+  document.getElementById('root')
 )
