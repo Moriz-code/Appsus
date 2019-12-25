@@ -14,7 +14,7 @@ export default class NotesPage extends React.Component {
   }
 
   loadNotes = () => {
-    var currNote = NoteService.getNotes()
+    let currNote = NoteService.getNotes().then(console.log('working?'))
     console.log('Notes', currNote);
   }
 
@@ -33,7 +33,9 @@ export default class NotesPage extends React.Component {
     const Cmp = this.getComponent();
    
     return (<React.Fragment>
+      <button className="addBtnNotes"><img src="..\assets\imgs\Notes-imgs\plusIcon.png"/></button>
       <div>{this.state.notes}</div>
+      <input type="text"/>
       <Cmp></Cmp>
       <select onChange={this.setComponent}>
         <option value="NoteTxt">T</option>

@@ -6,8 +6,14 @@
   background-color: blueviolet;
 }
 
+
 /* EMAILS CSS*/
 
 .unread{
   background-color:blueviolet;
+}
+/* notes css */
+.addBtnNotes img{
+  width:50px;
+
 }
