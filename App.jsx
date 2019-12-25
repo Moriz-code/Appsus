@@ -1,5 +1,5 @@
 import Home from './pages/Home.jsx'
-import NavBar from './js/cmps-general/NavBar.jsx'
+import NavBar from './cmps-general/NavBar.jsx'
 import NotesApp from './js/apps/Notes/NotesApp.jsx'
 import EmailsApp from './js/apps/email/EmailsApp.jsx'
 import About from './pages/About.jsx'
