@@ -1,7 +1,6 @@
 import AddNote from "./AddNote.js"
 import storageService from "../../services-general/storageService.js";
 
-
 export default {
   getNotes,
   saveNote,

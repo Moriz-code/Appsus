@@ -1,8 +1,9 @@
+// import Note from "../services/AddNote"
 
+export default function NotesPreview(props) {
+  // var Notes = props.notes;
+  // return <ul>{Notes.map((note) => <li key={note.id}>1</li>)}</ul>
 
-export default function NotesList(props) {
-  var Notes = props.notes;
-  return null
-
+return null
 }
 

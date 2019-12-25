@@ -1,7 +1,7 @@
 import NoteService from '../services/NoteService.js'
 import mapDynamicComponents from '../cmps/Dynamics/mapDynamicComponents.js'
 import NotesList from '../cmps/NotesList.jsx'
-import NotesApp from '../NotesApp.jsx';
+
 
 export default class NotesPage extends React.Component {
 
@@ -61,8 +61,8 @@ export default class NotesPage extends React.Component {
         <option value="NoteVideo">Video</option>
       </select>
 
-<NotesList></NotesList>
-   
+      {/* <NotesList></NotesList> */}
+
 
     </React.Fragment>
     )
