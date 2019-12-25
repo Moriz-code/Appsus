@@ -1,4 +1,4 @@
-import Home from './pages/Home.jsx'
+ Home from './pages/Home.jsx'
 class App extends React.Component {
 
     render() {
