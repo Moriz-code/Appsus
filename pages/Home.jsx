@@ -4,7 +4,8 @@ export default class Home extends React.Component {
         return (
             <section>
                 <h1>HOME sweet home</h1>
-                <p>we are dream team</p>
+
+                <p>we are dream tea.m</p>
             </section>
         )
     }
