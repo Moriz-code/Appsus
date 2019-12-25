@@ -1,9 +1,9 @@
 import Home from './pages/Home.jsx'
 import NavBar from './cmps-general/NavBar.jsx'
 import NotesApp from './js/apps/Notes/NotesApp.jsx'
-import EmailsApp from './js/apps/email/EmailsApp.jsx'
+import EmailsPage from './js/apps/email/pages/EmailsPage.jsx'
 import About from './pages/About.jsx'
-
+import EmailsDetailsPage from './js/apps/email/pages/EmailDetailsPage.jsx'
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
 const { createBrowserHistory } = History
@@ -20,7 +20,9 @@ class App extends React.Component {
           <Switch>
             <Route component={Home} path="/" exact></Route>
             <Route component={NotesApp} path="/notes" exact></Route>
-            <Route component={EmailsApp} path="/email" exact></Route>
+            <Route component={EmailsPage} path="/emails" exact></Route>
+            <Route component={EmailsDetailsPage} path="/emails/:id" exact></Route>
+
             {/* <Route component={BooksApp} path="/books" exact></Route> */}
             <Route component={About} path="/about" exact></Route>
           </Switch>

@@ -12,12 +12,14 @@ export default class EmailPreview extends React.Component {
 
     render() {
         const props = this.props;
-        return<li className={this.checkIfRead()}>
+
+        console.log(props.email.id)
+        return <Link to={`/emails/${props.email.id}`}>
+            <li className={this.checkIfRead()}>
                 <h2>{props.email.subject} </h2>
-                {/* <p>{props.email.body}</p> */}
                 <p>{props.email.sentAt}</p>
             </li>
-        // <Link to={`/${props.email.id}`}></Link>
+        </Link>
     }
 }
 
