@@ -12,9 +12,9 @@ const history = createBrowserHistory()
 
 class App extends React.Component {
 
-    render() {
-        return (
-         <main>
+  render() {
+    return (
+      <main>
         <Router history={history}>
           <NavBar></NavBar>
           <Switch>
@@ -26,12 +26,12 @@ class App extends React.Component {
           </Switch>
         </Router>
       </main>
-        )
-    }
+    )
+  }
 }
 
 
 ReactDOM.render(
-    <App/>,
-    document.getElementById('root')
+  <App />,
+  document.getElementById('root')
 )
