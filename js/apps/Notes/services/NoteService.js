@@ -9,25 +9,24 @@ export default {
 }
 
 
-
 let gNotes = createNotes();
 
 function createNotes() {
-  const defaultNotes = [new AddNote('NoteTxt', { txt: 'first Note!' }), new AddNote('NoteTxt', { txt: 'second note' })]
-  storageService.store('notes', defaultNotes)
-  return defaultNotes
+  const notes = [new AddNote('NoteTxt', {txt: 'first Note!' }) , new AddNote('NoteTxt', {txt: 'sec Note!' })];
+  storageService.store('notes', notes)
+  return notes
 }
 
 
+
 function getNotes() {
-  const notes = [...gNotes]
-  return Promise.resolve(notes)
+  return Promise.resolve([...gNotes]);
 }
 
 
 function saveNote(noteDetails) {
-  const note = new Note(noteDetails.type, noteDetails, info)
+  const note = new Note[noteDetails.type, noteDetails, info],
   gNotes = [...gNotes, note]
-  storageService.store('pets', gNotes)
+  storageService.store('notes', gNotes)
   return Promise.resolve(note)
 }
