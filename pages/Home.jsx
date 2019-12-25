@@ -5,7 +5,7 @@ export default class Home extends React.Component {
             <section>
                 <h1>HOME sweet home</h1>
 
-                <p>we are dream tea.m!!!!</p>
+                <p>we are dream tea.mjdsnckjxzn ckjz n</p>
             </section>
         )
     }
