@@ -4,7 +4,7 @@ export default class Note {
     this.type = type,
       this.isPinned = false,
       this.id = utils.getRandomID(),
-      this.info = info
+      this.info = {txt: info}
   }
 }
 
