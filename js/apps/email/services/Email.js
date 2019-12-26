@@ -1,11 +1,14 @@
 import utils from "../../services-general/utils.js"
 
 export default class Email {
-    constructor(subject, body, isRead, sentAt) {
-        this.id= utils.getRandomID(),
-        this.subject = subject,
-        this.body = body,
-        this.isRead = isRead,
+    constructor(from, to, subject, body, isRead, sentAt, isStar) {
+        this.id = utils.getRandomID()
+        this.from = from
+        this.to = to
+        this.subject = subject
+        this.body = body
+        this.isRead = isRead
         this.sentAt = sentAt
+        this.isStar = isStar
     }
 }

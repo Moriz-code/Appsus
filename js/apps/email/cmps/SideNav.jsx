@@ -1,9 +1,8 @@
 
 // const { Link } = ReactRouterDOM
-
 export default class SideNav extends React.Component {
 
-    countOfUnRead (props) {
+    countOfUnRead(props) {
         console.log(this.props.emails)
         var counter;
         let newEmails = this.props.emails.filter(function (email) {
@@ -15,18 +14,30 @@ export default class SideNav extends React.Component {
     }
 
 
+    countOfStars() {
+        var counter;
+        let newEmails = this.props.emails.filter(function (email) {
+            if (email.isStar) return true
+            else false
+        })
+        counter = newEmails.length;
+        return counter;
+    }
+
+
 
     render() {
         return <div className="flex column">
-            <button>Compose</button>
-            <button>Inbox ({this.countOfUnRead()})</button>
-            <button>Starred</button>
+            <button onClick={this.props.toggleIsComposing}>Compose</button>
+            <button>Inbox({this.countOfUnRead()})</button>
+            <button>Starred({this.countOfStars()})</button>
             <button>Sent mail</button>
             <button>Draft</button>
         </div>
-
     }
 }
+
+// onClick={AddNewMail.toggleModal()}
 
 // const { NavLink } = ReactRouterDOM
 

@@ -18,6 +18,12 @@ export default class EmailPreview extends React.Component {
 
     onDeleteEmail = () => {
         this.props.onDeleteEmail(this.props.email.id)
+        // console.log('child', this.props.email.id)
+
+    }
+
+    onStarEmail = () => {
+        this.props.onStarEmail(this.props.email.id)
         console.log('child', this.props.email.id)
 
     }
@@ -25,15 +31,17 @@ export default class EmailPreview extends React.Component {
 
     render() {
         const props = this.props;
+        console.log(this.props)
         return <div className=""> <Link to={`/emails/${props.email.id}`}>
             <li className={`email-container flex space-between ${this.checkIfRead()}`}>
-                <h2>{props.email.subject} </h2>
+                <p>{props.email.from}</p>
+                <p>{props.email.subject} </p>
                 <p>{props.email.sentAt}</p>
             </li>
         </Link>
             <button onClick={this.onChangeBcgColor}>read/unread</button>
             <button onClick={this.onDeleteEmail}>Delete</button>
-            <button>Star/UnStar</button>
+            <button onClick={this.onStarEmail}>Star/UnStar</button>
         </div>
     }
 }

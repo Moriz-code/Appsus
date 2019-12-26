@@ -4,7 +4,6 @@ import NotesApp from './js/apps/Notes/NotesApp.jsx'
 import EmailsPage from './js/apps/email/pages/EmailsPage.jsx'
 import About from './pages/About.jsx'
 import EmailsDetailsPage from './js/apps/email/pages/EmailDetailsPage.jsx'
-// import EmailAdd from './js/apps/email/cmps/EmailAdd.jsx'
 
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
@@ -24,7 +23,6 @@ class App extends React.Component {
             <Route component={NotesApp} path="/notes" exact></Route>
             <Route component={EmailsPage} path="/emails" exact></Route>
             <Route component={EmailsDetailsPage} path="/emails/:id" exact></Route>
-            {/* <Route component={EmailAdd} path="/emails/compose"></Route> */}
 
             {/* <Route component={BooksApp} path="/books" exact></Route> */}
             <Route component={About} path="/about" exact></Route>

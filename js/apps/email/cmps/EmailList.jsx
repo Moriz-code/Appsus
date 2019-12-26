@@ -11,13 +11,19 @@ export default class EmailList extends React.Component {
 
     onDeleteEmail = (emailId) => {
         this.props.onDeleteEmail(emailId)
+        // console.log('dad', emailId)
+
+    }
+
+    onStarEmail = (emailId) => {
+        this.props.onStarEmail(emailId)
         console.log('dad', emailId)
 
     }
 
     render() {
         const props = this.props;
-        return <ul className="emails-list-container clean-list" >{props.emails.map((email, i) => <EmailPreview onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}  key={i} email={email} ></EmailPreview>)}</ul>
+        return <ul className="emails-list-container clean-list" >{props.emails.map((email, i) => <EmailPreview onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}  key={i} email={email} ></EmailPreview>)}</ul>
     }
 
 
