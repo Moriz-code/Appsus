@@ -1,7 +1,15 @@
 // import Note from "../services/AddNote"
+import NotePreview from './NotePreview.jsx'
 
-export default function NotesList(props) {
-  return <li key={props.note.id}>{props.note.info.txt}</li>
+export default class NotesList extends React.Component {
+  render() {
+    const { onEdit, selectedNote, onDelete, allNotes } = this.props
+    return (
+      (allNotes && <div>
+        {allNotes.map(note => <NotePreview note={note} onEdit={onEdit} selectedNote={selectedNote} onDelete={onDelete}></NotePreview>)}
+      </div>)
+    )
+  }
 }
 
 
