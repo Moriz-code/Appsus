@@ -16,16 +16,32 @@ export default class EmailsPage extends React.Component {
         EmailService.getEmails().then(emails=>{
             this.setState({emails})
         })
- 
+    }
+
+
+    onChangeBcgColor = (emailId) => {
+        EmailService.ChangeBcgColor(emailId)
+        console.log('grandpa', emailId)
+        this.loadEmails();
+    }
+
+
+    onDeleteEmail = (emailId)=>{
+        console.log('grandpa', emailId)
+        
+        EmailService.deleteEmail(emailId).then(()=>{
+            this.props.history.push('/emails')
+            this.loadEmails()
+
+        });
     }
 
     render() {
-        // console.log (this.state.emails)
         return (
             <section>
                 <div className="flex space-between">
                     <SideNav emails={this.state.emails} ></SideNav>
-                    <EmailList emails={this.state.emails}></EmailList>
+                    <EmailList emails={this.state.emails} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>
                 </div>
             </section>
 

@@ -32,7 +32,7 @@ class EmailApp extends React.Component {
                     <Switch>
                         {/* <Route component={EmailsPage} path="/emails" exact></Route> */}
                         {/* <Route component={EmailsDetailsPage} path="/emails/:id"></Route> */}
-                        <Route component={EmailAdd} path="/emails/compose"></Route>
+                        {/* <Route component={EmailAdd} path="/emails/compose" exact></Route> */}
 
                     </Switch>
                 </Router>

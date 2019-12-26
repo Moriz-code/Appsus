@@ -1,14 +1,20 @@
+import SideNav from "./SideNav.jsx";
+
+
 export default class EmailDetails extends React.Component {
 
-    render() {
-        console.log('coral')
-        // const props = this.props;
-        return <li>
 
-            <h2>{this.props.email.subject}</h2>
-            <p>{this.props.email.sentAt}</p>
-            <p>{this.props.email.body}</p>
-        </li>
+
+
+    render() {
+        return <div>
+            {/* <SideNav></SideNav> */}
+            <li className="clean-list">
+                <h2>{this.props.email.subject}</h2>
+                <p>{this.props.email.sentAt}</p>
+                <p>{this.props.email.body}</p>
+            </li>
+        </div>
     }
 }
 
