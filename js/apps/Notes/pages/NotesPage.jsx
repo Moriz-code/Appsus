@@ -3,19 +3,11 @@ import mapDynamicComponents from '../cmps/Dynamics/mapDynamicComponents.js'
 import NotesList from '../cmps/NotesList.jsx'
 // import AddNote from '../cmps/AddNote.jsx'
 
-
-
 export default class NotesPage extends React.Component {
   state = {
-
-    isPinned: false,
-    info: '',
-
     selectedNote: { type: 'NoteTxt', isPinned: false, info: '', id: '', isSelected: false },
-
     //render all notes
     allNotes: [],
-
   }
 
   componentDidMount() {
@@ -29,60 +21,57 @@ export default class NotesPage extends React.Component {
   }
 
   setComponent = (ev) => {
+    console.log('this.state.selectedNote' , ev.target.value);
     let type = ev.target.value;
-    this.setState(prevState => ({ currentNote: { ...prevState.currentNote, type } }))
-    this.loadNotes();
+    
+    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, type}}),  this.loadNotes())  
+    
   }
 
-
-  getComponent() {
-    return mapDynamicComponents[this.state.selectedNote.type]
-  }
 
   onTextChange = (ev) => {
     let info = ev.target.value
-    this.setState(prevState => ({ currentNote: { ...prevState.currentNote, info: info } })),
-    this.loadNotes();
+    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, info: info } })),
+      this.loadNotes();
   }
 
   onSave = () => {
-    NoteService.saveNote(this.state).then(console.log('Saved'))
+    NoteService.saveNote(this.state.selectedNote).then(console.log('Saved')),
     this.loadNotes();
   }
 
   onDelete = (note) => {
-    NoteService.deleteNote(note).then(console.log('deleted'))
+    NoteService.deleteNote(note).then(console.log('deleted'));
     this.loadNotes();
   }
 
   onEdit = (note) => {
-    //changing the edit mode to on 
-    // set state to the notes
-    this.setState(({ currentNote: note }), console.log('seletedNote', note)
-    )
+    NoteService.getNoteById(note.id).then(selectedNote => (this.setState({ selectedNote })))
+    // console.log('edit', this.state.selectedNote);
   }
 
 
   render() {
-    const Cmp = this.getComponent();
-    return (<React.Fragment>
-      <button className="addBtnNotes" onClick={this.onSave}><img src="..\assets\imgs\Notes-imgs\plusIcon.png" /></button>
-      <input type="text" onChange={this.onTextChange} />
+    return (
+      <div>
+        <button className="addBtnNotes" onClick={this.onSave}><img src="..\assets\imgs\Notes-imgs\plusIcon.png" /></button>
+        <input type="text" onChange={this.onTextChange} />
 
-      <Cmp></Cmp>
-      <select onChange={this.setComponent}>
-        <option value="NoteTxt">T</option>
-        <option value="NoteImg">Image</option>
-        <option value="NoteTodos">To-Do</option>
-        <option value="NoteVideo">Video</option>
-      </select>
+     
+        <select onChange={this.setComponent}>
+          <option value="NoteTxt">T</option>
+          <option value="NoteImg">Image</option>
+          <option value="NoteTodos">To-Do</option>
+          <option value="NoteVideo">Video</option>
+        </select>
 
 
-      <NotesList onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
-
-    </React.Fragment>
+        {this.state.allNotes.length > 0 && <NotesList onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
+        }
+      </div>
     )
   }
 }
+
 
 

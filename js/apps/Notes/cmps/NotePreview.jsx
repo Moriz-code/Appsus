@@ -12,8 +12,8 @@ export default class NotePreview extends React.Component {
   render() {
     return <div>
       {this.props.note.info.txt}
-      <div onClick={this.onEdit} className="AllNotes">
-        <button onClick={this.onDelete}>Delete</button>
+      <div onClick={this.props.onEdit} className="editBtnsNote">
+        <button onClick={this.props.onDelete}>Delete</button>
       </div>
 
     </div>
