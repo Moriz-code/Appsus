@@ -1,10 +1,11 @@
 import utils from '../../services-general/utils.js';
 export default class Note {
-  constructor(type = 'NoteTxt', info = '') {
-    this.type = type,
-      this.isPinned = false,
-      this.id = utils.getRandomID(),
-      this.info = {txt: info}
+  constructor(type = 'NoteTxt', isPinned = false, info = '' , id = utils.getRandomID(), isEdit = false) {
+      this.type = type,
+      this.isPinned = isPinned,
+      this.id = id,
+      this.info = {txt: info},
+      this.isEdit = false
   }
 }
 

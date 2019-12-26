@@ -6,14 +6,16 @@ import NotesList from '../cmps/NotesList.jsx'
 
 
 export default class NotesPage extends React.Component {
-
   state = {
-    // isPinned: false,
-    // id: 1, 
+
+    isPinned: false,
     info: '',
-    type: 'NoteTxt',
-    allNotes: []
-    // filterBy: null
+
+    selectedNote: { type: 'NoteTxt', isPinned: false, info: '', id: '', isSelected: false },
+
+    //render all notes
+    allNotes: [],
+
   }
 
   componentDidMount() {
@@ -23,21 +25,24 @@ export default class NotesPage extends React.Component {
   loadNotes = () => {
     NoteService.getNotes().then(response => {
       this.setState({ allNotes: response })
-      // console.log('allNots', this.state.allNotes)
-
     })
   }
 
   setComponent = (ev) => {
-    this.setState({ type: ev.target.value })
+    let type = ev.target.value;
+    this.setState(prevState => ({ currentNote: { ...prevState.currentNote, type } }))
+    this.loadNotes();
   }
 
+
   getComponent() {
-    return mapDynamicComponents[this.state.type] 
+    return mapDynamicComponents[this.state.selectedNote.type]
   }
 
   onTextChange = (ev) => {
-    this.setState({info: ev.target.value})
+    let info = ev.target.value
+    this.setState(prevState => ({ currentNote: { ...prevState.currentNote, info: info } })),
+    this.loadNotes();
   }
 
   onSave = () => {
@@ -45,18 +50,25 @@ export default class NotesPage extends React.Component {
     this.loadNotes();
   }
 
+  onDelete = (note) => {
+    NoteService.deleteNote(note).then(console.log('deleted'))
+    this.loadNotes();
+  }
+
+  onEdit = (note) => {
+    //changing the edit mode to on 
+    // set state to the notes
+    this.setState(({ currentNote: note }), console.log('seletedNote', note)
+    )
+  }
+
 
   render() {
-    
     const Cmp = this.getComponent();
-
     return (<React.Fragment>
-
       <button className="addBtnNotes" onClick={this.onSave}><img src="..\assets\imgs\Notes-imgs\plusIcon.png" /></button>
-
       <input type="text" onChange={this.onTextChange} />
 
-      
       <Cmp></Cmp>
       <select onChange={this.setComponent}>
         <option value="NoteTxt">T</option>
@@ -66,9 +78,11 @@ export default class NotesPage extends React.Component {
       </select>
 
 
-      <ul>{this.state.allNotes.map((Note,i) => <NotesList key={i} note={Note}></NotesList>)}</ul>
+      <NotesList onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
 
     </React.Fragment>
     )
   }
 }
+
+
