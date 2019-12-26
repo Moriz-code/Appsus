@@ -1,8 +1,7 @@
-
+// import Note from "../services/AddNote"
 
 export default function NotesList(props) {
-  var Notes = props.notes;
-  return null
-
+  return <li key={props.note.id}>{props.note.info.txt}</li>
 }
+
 
