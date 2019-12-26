@@ -1,4 +1,4 @@
 export default function Video(props){
-  console.log('Arrived to single comp.');
-  return `Video${props.name}`
+  console.log('Arrived to Video comp.' , props);
+  return <div>video</div>
 }
