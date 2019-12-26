@@ -23,8 +23,8 @@ export default class EmailsPage extends React.Component {
         // console.log (this.state.emails)
         return (
             <section>
-                <div>
-                    <SideNav emails={this.state.emails}></SideNav>
+                <div className="flex space-between">
+                    <SideNav emails={this.state.emails} ></SideNav>
                     <EmailList emails={this.state.emails}></EmailList>
                 </div>
             </section>

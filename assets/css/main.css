@@ -9,9 +9,83 @@
 
 /* EMAILS CSS*/
 
-.unread{
-  background-color:blueviolet;
+
+/* Base */
+
+* {
+  box-sizing: border-box;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0;
+}
+
+
+
+/* list helpers */
+
+.clean-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.emails-list-container{
+  width:150vh;
+
+}
+
+.email-container{
+border-bottom: 1px solid rgb(199, 199, 199);
+}
+
+.unread{
+  background-color:rgb(245, 245, 245);
+}
+
+
+/* sideNav */
+
+.sideNav{
+  padding-right: 50px;
+  padding-left:10px;
+  padding-top: 20px;
+}
+
+.sideNav li{
+  margin-bottom: 14px;
+}
+
+
+
+
+/* flex helpers */
+
+.flex {
+  display: flex;
+}
+
+.flex.column {
+  flex-direction: column;
+}
+
+.flex.wrap {
+  flex-wrap: wrap;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+
+
+
 /* notes css */
 .addBtnNotes img{
   width:50px;

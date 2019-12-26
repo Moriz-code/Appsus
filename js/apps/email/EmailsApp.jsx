@@ -14,6 +14,7 @@
 
 import EmailsPage from './pages/EmailsPage.jsx'
 import EmailsDetailsPage from './pages/EmailsDetailsPage.jsx'
+import EmailAdd from './cmps/EmailAdd.jsx'
 
 
 
@@ -30,7 +31,9 @@ class EmailApp extends React.Component {
                 <Router history={history}>
                     <Switch>
                         {/* <Route component={EmailsPage} path="/emails" exact></Route> */}
-                        <Route component={EmailsDetailsPage} path="/emails/:id"></Route>
+                        {/* <Route component={EmailsDetailsPage} path="/emails/:id"></Route> */}
+                        <Route component={EmailAdd} path="/emails/compose"></Route>
+
                     </Switch>
                 </Router>
             </main>
