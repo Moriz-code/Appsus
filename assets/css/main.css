@@ -28,15 +28,16 @@ a {
 
 body{
   margin:0;
-
 }
 
-
-.main-email{
+/* .main-email-app{
   display: flex;
   flex-direction: column;
   height: 100vh;
-}
+  overflow: hidden;
+} */
+
+
 
 /* list helpers */
 
@@ -47,8 +48,9 @@ body{
 }
 
 .emails-list-container{
-  width:182vh;
-
+  height: 100vh;
+  flex:1;
+  overflow-y: auto;
 }
 
 .email-container{
@@ -67,15 +69,19 @@ z-index: -1;
 
 
 /* sideNav */
-
 .sideNav{
+  flex: 0 0 200px;
+  overflow: hidden;
+}
+
+
+.sideNav button{
+  background-color: #ffffff;
+  border: 0px;
   padding-right: 50px;
   padding-left:10px;
   padding-top: 20px;
-}
-
-.sideNav li{
-  margin-bottom: 14px;
+  text-align: left;
 }
 
 

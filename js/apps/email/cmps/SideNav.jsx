@@ -3,7 +3,6 @@
 export default class SideNav extends React.Component {
 
     countOfUnRead(props) {
-        console.log(this.props.emails)
         var counter;
         let newEmails = this.props.emails.filter(function (email) {
             if (!email.isRead) return true
@@ -25,13 +24,19 @@ export default class SideNav extends React.Component {
     }
 
 
+    filterEmails=(ev)=>{
+        const field = ev.target.name;
+        this.props.onSetFilter(field)
+        console.log('side nav' , field )
+    }
+
 
     render() {
-        return <div className="flex column">
+        return <div className="sideNav flex column">
             <button onClick={this.props.toggleIsComposing}>Compose</button>
-            <button>Inbox({this.countOfUnRead()})</button>
-            <button>Starred({this.countOfStars()})</button>
-            <button>Sent mail</button>
+            <button onClick={this.filterEmails} name="inbox" >Inbox({this.countOfUnRead()})</button>
+            <button onClick={this.filterEmails} name="starred" >Starred({this.countOfStars()})</button>
+            <button onClick={this.filterEmails} name="sent-mail" >Sent mail</button>
             <button>Draft</button>
         </div>
     }
