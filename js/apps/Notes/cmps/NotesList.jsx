@@ -1,12 +1,12 @@
 // import Note from "../services/AddNote"
-import NotePreview from './NotePreview.jsx'
+// import NotePreview from './NotePreview.jsx'
 import MapDynamicComponents from './Dynamics/mapDynamicComponents.js'
 
 export default class NotesList extends React.Component {
 
   getComponent = () => {
     if (this.state.selectedNote) {
-      // console.log(this.state.selectedNote.type);
+
       return mapDynamicComponents[this.state.selectedNote.type]
     }
     else {
@@ -14,10 +14,12 @@ export default class NotesList extends React.Component {
     }
   }
 
-render(){
-  const {allNotes} = this.props
-  // console.log(this.props);
-  var noteCmps = allNotes.map(cmp => <MapDynamicComponents cmp={cmp}/>)
-  return ( noteCmps)
-}
+  render() {
+    const { allNotes, onEdit, onDelete, selectedNote, onSave, onUpdate } = this.props
+    return <React.Fragment> {
+      allNotes.map((cmp, i) => <MapDynamicComponents key={i} onEdit={onEdit} onUpdate={onUpdate} selectedNote={selectedNote} onDelete={onDelete} cmp={cmp} />)
+    }
+    </React.Fragment>
+
+  }
 }
