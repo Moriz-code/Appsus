@@ -57,8 +57,12 @@ export default class EmailsPage extends React.Component {
     }
 
     onSetFilter = (filterName) => {
+        // this.setState({ isComposing: true})
         this.setState({filterBy: filterName})
-        this.loadEmails();
+        console.log(this.state);
+        
+        // this.loadEmails;
+
     }
 
 
