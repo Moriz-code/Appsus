@@ -14,9 +14,6 @@
 
 * {
   box-sizing: border-box;
-  
-
-
 }
 
 a {
@@ -83,7 +80,6 @@ z-index: -1;
 
 
 
-
 /* flex helpers */
 
 .flex {
@@ -118,5 +114,15 @@ z-index: -1;
 .AllNotes div{
   background-color: beige;
   margin:10px;
+ width: 50%;
+ height: 50px;
 
+ 
+  
 }
+
+.notesImgs img{
+width:90px;
+border-radius:5px;
+}
+

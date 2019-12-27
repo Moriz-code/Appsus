@@ -1,3 +1,5 @@
+import NotesList from './NotesList.jsx'
+
 export default class NotePreview extends React.Component {
 
   onDelete = () => {
@@ -6,14 +8,15 @@ export default class NotePreview extends React.Component {
 
   onEdit = () => {
     this.props.onEdit(this.props.note)
+
   }
 
 
   render() {
     return <div>
-      {this.props.note.info.txt}
       <div onClick={this.props.onEdit} className="editBtnsNote">
         <button onClick={this.props.onDelete}>Delete</button>
+
       </div>
 
     </div>
