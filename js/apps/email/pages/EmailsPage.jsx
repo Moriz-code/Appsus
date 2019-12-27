@@ -2,12 +2,16 @@ import EmailService from '../services/EmailService.js'
 import EmailList from '../cmps/EmailList.jsx'
 import SideNav from '../cmps/SideNav.jsx';
 import AddNewMail from '../cmps/AddNewMail.jsx'
+import Email from '../services/Email.js';
+import SearchEmail from '../cmps/SearchEmail.jsx'
 
 
 export default class EmailsPage extends React.Component {
     state = {
         emails: [],
-        isComposing: false
+        isComposing: false,
+        filterBy:null
+
     }
 
     componentDidMount() {
@@ -15,7 +19,7 @@ export default class EmailsPage extends React.Component {
     }
 
     loadEmails = () => {
-        EmailService.getEmails().then(emails => {
+        EmailService.getEmails(this.state.filterBy).then(emails => {
             this.setState({ emails })
         })
     }
@@ -50,21 +54,25 @@ export default class EmailsPage extends React.Component {
             isComposing: !prevState.isComposing
         }), () => console.log(this.state.isComposing)
         )
-        // this.loadEmails();
-        // this.state.isComposing = !this.state.isHide
+    }
 
+    onSetFilter = (filterName) => {
+        this.setState({filterBy: filterName})
+        this.loadEmails();
     }
 
 
     render() {
-        return <section className="main-email">
+        return <div className="main-email-app">
+            <SearchEmail></SearchEmail>
             {!this.state.isComposing ? (<div className="flex space-between">
-                <SideNav emails={this.state.emails} toggleIsComposing={this.toggleIsComposing} ></SideNav>
+                <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
                 <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>
             </div>) : (<div className="flex column">
-                <SideNav emails={this.state.emails} toggleIsComposing={this.toggleIsComposing} ></SideNav>
+                <SideNav onSetFilter={this.onSetFilter} emails={this.state.emails} toggleIsComposing={this.toggleIsComposing}></SideNav>
                 <AddNewMail loadEmails={this.loadEmails}></AddNewMail>
             </div>)}
-        </section>
+
+        </div>
     }
 }

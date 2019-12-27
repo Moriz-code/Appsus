@@ -26,9 +26,9 @@ function createEmails() {
     return emails;
 }
 
-function getEmails() {
-    // return [...gEmail]
-    return Promise.resolve([...gEmail]);
+function getEmails(filterBy) {
+    if(!filterBy||filterBy==='inbox'||filterBy==='sent-mail') return Promise.resolve([...gEmail]);
+    if(filterBy==='starred')return gEmail.filter(email=> email.isStar);
 }
 
 function getEmailById(emailId) {
@@ -54,6 +54,8 @@ function starEmail(emailId) {
     })
     // return Promise.resolve(true)
 }
+
+
 
 
 function saveEmail(EmailDetails) {

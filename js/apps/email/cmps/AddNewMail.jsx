@@ -1,6 +1,6 @@
 import EmailService from '../services/EmailService.js'
 
-export default class EmailList extends React.Component {
+export default class AddNewMail extends React.Component {
     state = {
         to: '',
         subject: '',
@@ -24,8 +24,6 @@ export default class EmailList extends React.Component {
         this.setState({ [field]: value })
         console.log(field, value)
     }
-
-
 
 
 

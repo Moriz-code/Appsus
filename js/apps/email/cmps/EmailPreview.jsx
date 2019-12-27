@@ -31,7 +31,6 @@ export default class EmailPreview extends React.Component {
 
     render() {
         const props = this.props;
-        console.log(this.props)
         return <div className=""> <Link to={`/emails/${props.email.id}`}>
             <li className={`email-container flex space-between ${this.checkIfRead()}`}>
                 <p>{props.email.from}</p>
