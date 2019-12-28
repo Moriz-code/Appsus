@@ -1,33 +1,32 @@
-
+import BtnsPanel from '../BtnsPanel.jsx'
 export default class Txt extends React.Component {
 
-
-  onDelete = () => {
-    this.props.onDelete(this.props.cmp)
+  onEdit = () => {
+    this.props.onEdit(this.props.cmp)
   }
 
-  onEdit = (ev) => {
-      // console.log('edit' , ev.target.value);
-      let editedInfo = ev.target.value
-      this.props.onEdit(this.props.cmp, ev)
+  onTextChange = (ev) => {
+    this.props.onTextChange(ev)
   }
 
-  onUpdate = () => {
-    this.props.onUpdate(this.props.cmp)
-
-  }
 
 
   render() {
-    return (
-      <div onClick={this.onEdit}>
-        <textarea onChange={this.onEdit} defaultValue={this.props.cmp.info}></textarea>
-        <button onClick={this.onDelete}>Delete</button>
-        <button onClick={this.onUpdate}>Update</button>
+    const { cmp, onDelete, onUpdate, onChangeBcColor, onEdit } = this.props;
+
+    let bcColor = (cmp.style.bccolor)
+    return (<React.Fragment>
+      
+      <div style={{backgroundColor: bcColor}} >
+        <textarea onChange={this.onTextChange} onClick={this.onEdit} defaultValue={this.props.cmp.info}></textarea>
+        <BtnsPanel cmp={cmp} onDelete={onDelete} onChangeBcColor={onChangeBcColor} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
       </div>
+    </React.Fragment>
     )
   }
 }
+
+
 
 // onBlur={onSave}
 
