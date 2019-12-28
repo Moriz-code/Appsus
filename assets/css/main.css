@@ -58,18 +58,15 @@ body {
   height: 100vh;
   flex: 1;
   overflow-y: auto;
+  background-color: rgb(245, 245, 245);
 }
 
 /* right-side */
 
 .right-side {
   flex: 1;
-  margin-left: 20px;
+  margin-left: 6px;
 }
-
-
-
-
 
 /* search */
 
@@ -88,7 +85,7 @@ body {
   background-color: rgb(230, 230, 230);
 }
 
-.mag-input{
+.mag-input {
   opacity: 30%;
 }
 
@@ -102,25 +99,46 @@ body {
   background-color: rgb(230, 230, 230);
   font-family: roboto-regular, serif;
   padding-left: 8px;
-
 }
+
 /* mail */
+
+.email-and-btn-container{
+  padding-bottom: 20px;
+}
 
 .email-container {
   height: 40px;
   border-bottom: 1px solid rgb(199, 199, 199);
   z-index: -1;
+  width: 84vw;
 }
 
-.email-from{
-padding-left: 12px;
+.email-btn button {
+  background-color: white;
+  border: 0px;
+  font-size: 16px;
 }
 
-.email-subject{
-font-size: 14px;
+.email-from {
+  width:100px;
+  padding-left: 12px;
+  font-weight: bold;
 }
 
-.email-date{
+.email-subject {
+  /* width:1000px; */
+  font-size: 16px;
+  padding-left: 50px;
+  color:teal;
+}
+
+.email-body{
+  font-size: 12px;
+  padding-left: 20px;
+}
+
+.email-date {
   font-size: 14px;
 }
 
@@ -134,18 +152,34 @@ font-size: 14px;
 
 /* sideNav- left-side */
 
+
+.left-side{
+padding-right: 20px;
+border-right: 1px solid  rgb(233, 233, 233);
+}
+
 .sideNav {
   flex: 0 0 200px;
   overflow: hidden;
   text-align: center;
 }
 
-.sideNav button {
-  background-color: #ffffff;
+.side-nav-3btn button {
+ background-color: #ffffff; 
   border: 0px;
-  padding-top: 20px;
+  padding-top: 60px;
   text-align: center;
   font-family: roboto-regular, serif;
+} 
+
+.compose-btn button{
+  border: 0px;
+  width:100px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color:teal;;
+
 }
 
 .email-profile-pic {
@@ -153,6 +187,11 @@ font-size: 14px;
   height: 120px;
   border-radius: 50%;
   margin-left: 15px;
+}
+
+.user-name{
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgb(233, 233, 233);
 }
 
 /* flex helpers */

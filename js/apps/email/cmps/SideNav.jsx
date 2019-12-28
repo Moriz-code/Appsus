@@ -36,12 +36,16 @@ export default class SideNav extends React.Component {
     render() {
         return <div className="sideNav flex column">
             <img className="email-profile-pic" src="assets/imgs/Email-imgs/profile.jpg"/>
-            <h4>Coral Solomon</h4>
-            <button onClick={this.props.toggleIsComposing}>Compose</button>
-            <button onClick={this.filterEmails} name="inbox" >Inbox({this.countOfUnRead()})</button>
-            <button onClick={this.filterEmails} name="starred" >Starred({this.countOfStars()})</button>
-            <button onClick={this.filterEmails} name="sentMail" >Sent mail</button>
-            <button >Trash</button>
+            <h4 className="user-name">Coral Solomon</h4>
+            <div className="compose-btn">
+            <button onClick={this.props.toggleIsComposing}>Compose <i className="fas fa-plus"></i></button>
+            </div>
+           <div className="side-nav-3btn">
+            <button onClick={this.filterEmails} name="inbox"> <i class="fas fa-inbox"></i> Inbox <i class="far fa-circle"></i> {this.countOfUnRead()}</button>
+            <button onClick={this.filterEmails} name="starred" ><i className="fas fa-star"></i> Starred({this.countOfStars()})</button>
+            <button onClick={this.filterEmails} name="sentMail"> <i class="fas fa-paper-plane"></i> Sent mail</button>
+            <button ><i className="far fa-trash-alt"></i> Trash</button>
+            </div>
         </div>
     }
 }
