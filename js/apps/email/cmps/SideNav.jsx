@@ -25,19 +25,23 @@ export default class SideNav extends React.Component {
 
 
     filterEmails=(ev)=>{
+        // debugger;
         const field = ev.target.name;
-        this.props.onSetFilter(field)
         console.log('side nav' , field )
+        console.log(this.props)
+        this.props.onSetFilter(field)
     }
 
 
     render() {
         return <div className="sideNav flex column">
+            <img className="email-profile-pic" src="assets/imgs/Email-imgs/profile.jpg"/>
+            <h4>Coral Solomon</h4>
             <button onClick={this.props.toggleIsComposing}>Compose</button>
             <button onClick={this.filterEmails} name="inbox" >Inbox({this.countOfUnRead()})</button>
             <button onClick={this.filterEmails} name="starred" >Starred({this.countOfStars()})</button>
-            <button onClick={this.filterEmails} name="sent-mail" >Sent mail</button>
-            <button>Draft</button>
+            <button onClick={this.filterEmails} name="sentMail" >Sent mail</button>
+            <button >Trash</button>
         </div>
     }
 }

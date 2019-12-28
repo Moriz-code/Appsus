@@ -1,5 +1,6 @@
 import EmailDetails from '../cmps/EmailDetails.jsx'
 import EmailService from '../services/EmailService.js';
+import SideNav from '../cmps/SideNav.jsx'
 
 export default class EmailDetailsPage extends React.Component {
 
@@ -7,7 +8,7 @@ export default class EmailDetailsPage extends React.Component {
         email: null
     }
 
-  
+
     componentDidMount() {
         this.loadEmail();
     }
@@ -29,11 +30,14 @@ export default class EmailDetailsPage extends React.Component {
         })
     }
 
-    
+
     render() {
         // return         console.log('@@@@@')
         // console.log(this.state.book);
         if (!this.state.email) return <div className="loading">Loading...</div>
-        return <EmailDetails email={this.state.email} ></EmailDetails>
+        return <div>
+            {/* <SideNav emails={this.state.emails} ></SideNav> */}
+            <EmailDetails email={this.state.email} ></EmailDetails>
+        </div>
     }
 }
