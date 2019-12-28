@@ -1,7 +1,7 @@
 import utils from "../../services-general/utils.js"
 
 export default class Email {
-    constructor(from, to, subject, body, isRead, sentAt, isStar) {
+    constructor(from, to, subject, body, isRead, sentAt, isStar,isDelete) {
         this.id = utils.getRandomID()
         this.from = from
         this.to = to
@@ -10,5 +10,6 @@ export default class Email {
         this.isRead = isRead
         this.sentAt = sentAt
         this.isStar = isStar
+        this.isDelete = isDelete
     }
 }

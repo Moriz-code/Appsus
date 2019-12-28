@@ -1,10 +1,22 @@
-.NavBar{
+/* .NavBar{
   background-color: aquamarine;
 }
 
 .active{
   background-color: blueviolet;
+} */
+
+
+@font-face {
+  font-family: roboto-regular ;
+  src: url(../Fonts/Roboto-Regular.ttf);
 }
+
+@font-face {
+  font-family: roboto-bold ;
+  src: url(../Fonts/Roboto-Bold.ttf);
+}
+
 
 
 /* EMAILS CSS*/
@@ -14,6 +26,11 @@
 
 * {
   box-sizing: border-box;
+}
+
+
+html {
+  font-family: roboto-regular, serif;
 }
 
 a {
@@ -30,13 +47,10 @@ body{
   margin:0;
 }
 
-/* .main-email-app{
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-} */
 
+.body-container{
+  height: 100vh;
+}
 
 
 /* list helpers */
@@ -53,6 +67,13 @@ body{
   overflow-y: auto;
 }
 
+/* right-side */
+
+.right-side{
+  flex:1;
+  margin-left: 20px;
+}
+
 .email-container{
 border-bottom: 1px solid rgb(199, 199, 199);
 z-index: -1;
@@ -64,24 +85,54 @@ z-index: -1;
 
 .read{
   background-color:rgb(160, 45, 45);
-
 }
 
 
-/* sideNav */
+/* search */
+.search-email{
+padding-left: 8px;
+margin-bottom: 20px;
+height: 30px;
+width: 250px;
+border: 0px;
+background-color: rgb(230, 230, 230);
+}
+
+.search-input{
+  border: 0px;
+  width:220px;
+  background-color: rgb(230, 230, 230);
+}
+
+/* filter */
+/* .select-filter{
+
+} */
+
+/* sideNav- left-side */
+
+
 .sideNav{
   flex: 0 0 200px;
   overflow: hidden;
+  text-align: center;
+
 }
 
 
 .sideNav button{
   background-color: #ffffff;
   border: 0px;
-  padding-right: 50px;
-  padding-left:10px;
   padding-top: 20px;
-  text-align: left;
+  text-align: center;
+  font-family: roboto-regular, serif;
+}
+
+.email-profile-pic{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-left:15px;
 }
 
 
