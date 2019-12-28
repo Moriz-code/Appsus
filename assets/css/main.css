@@ -26,6 +26,7 @@
 
 html {
   font-family: roboto-regular, serif;
+  height: 100vh;
 }
 
 a {
@@ -44,6 +45,11 @@ body {
 
 .body-container {
   height: 100vh;
+}
+
+.NavBar li {
+  display: inline;
+  margin: 15px;
 }
 
 /* list helpers */

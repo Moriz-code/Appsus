@@ -10,7 +10,7 @@ export default {
   editNote,
 }
 
- let gNotes = [AddNote.createNote('NoteTxt', false)];
+ let gNotes = [AddNote.createNote('NoteTxt', false, 'Add your first note...')];
 
 function createNotes() {
   storageService.store('createNotes', gNotes)

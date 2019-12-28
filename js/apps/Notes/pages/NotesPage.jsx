@@ -79,41 +79,35 @@ export default class NotesPage extends React.Component {
 
 
   render() {
-    return (
-      <div>
-        <NotesFilter filterBy={this.state.filterBy} onFilter={this.onFilter}></NotesFilter>
+    return <React.Fragment>
 
-        <button className="addBtnNotes" onClick={this.onAdd}><img src="..\assets\imgs\Notes-imgs\plusIcon.png" /></button>
+<h1 className="notes-container">Miss Notes</h1> <NotesFilter filterBy={this.state.filterBy} onFilter={this.onFilter}></NotesFilter>
 
-        <input type="text" onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />
+<div className="addNotePanel">
 
-        {/* <ul onChange={this.setComponent}>
-          <li value="NoteTxt">Txt</li>
-          <li value="NoteImg">Img</li>
-          <li value="NoteTodos"></li>
-          <li value="NoteVideo"></li>
-        </ul> */}
+      <input type="text" className="addInputPanel" onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />
+  
 
-        <div class="icon-bar">
-          <a class="active" href="#"><i class="fa fa-home"></i></a>
-          <a><i class="fa fa-search"></i></a>
-          <a><i class="fa fa-envelope"></i></a>
-          <a><i class="fa fa-globe"></i></a>
-          <a><i class="fa fa-trash"></i></a>
-        </div>
-
-        {/* <select onChange={this.setComponent}>
-          <option value="NoteTxt">T</option>
-          <option value="NoteImg"></option>
-          <option value="NoteTodos">To-Do</option>
-          <option value="NoteVideo">Video</option>
-        </select> */}
-
+      <div id="radio" className="addNoteBtns" onChange={this.setComponent}>
+        <input type="radio" id="radio1" value="NoteTxt" name="radio" />
+        <label htmlFor="radio1"><i className="far fa-sticky-note fa-lg"></i></label>
+        <input type="radio" id="radio2" value="NoteImg" name="radio"/>
+        <label htmlFor="radio2"><i className="far fa-images fa-lg"></i></label>
+        <input type="radio" id="radio3" value="NoteTodos" name="radio" />
+        <label htmlFor="radio3"><i className="fas fa-list-ul fa-lg"></i></label>
+        <input type="radio" id="radio4" value="NoteVideo" name="radio" />
+        <label htmlFor="radio4"><i className="fab fa-youtube-square fa-lg"></i></label>
+      </div>
+   
+    <button className="addBtnNotes" onClick={this.onAdd}><i className="fas fa-plus-circle fa-lg"></i></button>
+    </div>
+      <div className="notes-container">
         {this.state.allNotes.length > 0 && <NotesList onTextChange={this.onTextChange} onUpdate={this.onUpdate} onChangeBcColor={this.onChangeBcColor}
           onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
         }
       </div>
-    )
+
+    </React.Fragment>
   }
 }
 

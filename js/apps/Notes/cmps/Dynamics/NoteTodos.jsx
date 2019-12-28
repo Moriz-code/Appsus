@@ -13,7 +13,7 @@ export default class Todos extends React.Component {
     const { cmp, onDelete, onUpdate, onSetBcColor } = this.props;
     let bcColor = (cmp.style.bccolor)
     return (<React.Fragment>
-      <div style={{ backgroundColor: bcColor }} onClick={this.onEdit}>
+      <div className="Note" style={{ backgroundColor: bcColor }} onClick={this.onEdit}>
         <div>
           <ul>
             <li>{cmp.info}</li>

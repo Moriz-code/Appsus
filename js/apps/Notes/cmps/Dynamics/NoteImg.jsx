@@ -13,7 +13,7 @@ export default class Img extends React.Component {
     const { cmp, onDelete, onUpdate, onSetBcColor } = this.props;
     let bcColor = (cmp.style.bccolor)
     return (<React.Fragment>
-      <div style={{ backgroundColor: bcColor }} onClick={this.onEdit}>
+      <div className="Note" style={{ backgroundColor: bcColor }} onClick={this.onEdit}>
         <div className="notesImgs"><img src={cmp.info} /></div>
         {/* <textarea onChange={this.onTextChange} defaultValue={this.props.cmp.info}></textarea> */}
         <BtnsPanel cmp={cmp} onSetBcColor={onSetBcColor} onDelete={onDelete} onUpdate={onUpdate}></BtnsPanel>

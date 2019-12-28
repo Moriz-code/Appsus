@@ -27,7 +27,7 @@ export default class Video extends React.Component {
     let url = this.props.cmp.info;
     if (url.includes('youtube')) {
       const videoEmbdedUrl = this.getUrlId()
-      return (<div onClick={this.onEdit} ><iframe width="420" height="345" src={videoEmbdedUrl}></iframe>
+      return (<div className="Note" onClick={this.onEdit}><iframe src={videoEmbdedUrl}></iframe>
           <BtnsPanel cmp={cmp} onDelete={onDelete} onChangeBcColor={onChangeBcColor} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
          </div>
          )

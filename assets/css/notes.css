@@ -1,18 +1,13 @@
 /* notes css */
 
 .addBtnNotes img {
-  width: 50px;
+  width: 30px;
 }
 
-.AllNotes div {
-  background-color: beige;
-  margin: 10px;
-  width: 50%;
-  height: 50px;
-}
 
 .notesImgs img {
-  width: 90px;
+  width: 250px;
+  height:auto;
   border-radius: 5px;
 }
 
@@ -23,53 +18,13 @@
 } */
 
 input[type="radio"]:checked+label span {
-  transform: scale(1.25);
-}
-
-input[type="radio"]:checked+label .red {
-  border: 2px solid #711313;
-}
-
-input[type="radio"]:checked+label .orange {
-  border: 2px solid #873a08;
-}
-
-input[type="radio"]:checked+label .yellow {
-  border: 2px solid #816102;
-}
-
-input[type="radio"]:checked+label .olive {
-  border: 2px solid #505a0b;
-}
-
-input[type="radio"]:checked+label .green {
-  border: 2px solid #0e4e1d;
-}
-
-input[type="radio"]:checked+label .teal {
-  border: 2px solid #003633;
-}
-
-input[type="radio"]:checked+label .blue {
-  border: 2px solid #103f62;
-}
-
-input[type="radio"]:checked+label .violet {
-  border: 2px solid #321a64;
-}
-
-input[type="radio"]:checked+label .purple {
-  border: 2px solid #501962;
-}
-
-input[type="radio"]:checked+label .pink {
-  border: 2px solid #851554;
+  transform: scale(1.1);
 }
 
 label {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-right: 5px;
   cursor: pointer;
 }
@@ -98,25 +53,15 @@ label span.yellow {
   background: #fbbd08;
 }
 
-label span.olive {
-  background: #b5cc18;
-}
-
 label span.green {
   background: #21ba45;
 }
 
-label span.teal {
-  background: #00b5ad;
-}
 
 label span.blue {
   background: #2185d0;
 }
 
-label span.violet {
-  background: #6435c9;
-}
 
 label span.purple {
   background: #a333c8;
@@ -125,3 +70,142 @@ label span.purple {
 label span.pink {
   background: #e03997;
 }
+
+.notes-container{
+  font-family: roboto-regular, serif;
+  padding-right: 50px;
+  padding-left: 50px;
+  column-count: 3;
+  column-gap: 20px; 
+  margin-top:10px;
+
+}
+
+.Note:not(:first-child){
+  margin-top:10px;
+}
+
+.Note{
+
+display: flex;
+flex-direction: column;
+align-items: center;
+  border-bottom: 5px solid rgb(245, 245, 245);
+ background-color: gainsboro;
+  break-inside: avoid;
+  border-radius: 3px;
+}
+
+
+
+.Note textarea{
+ resize: none;
+ width: 90%;
+ margin-top: 15px;
+ margin-bottom: 15px;
+ border:none;
+}
+
+.BtnPanel button , .addBtnNotes{
+ cursor: pointer;
+  font-size: 1.1rem;
+  border:none;
+  background-color: Transparent;
+}
+
+.BtnPanel button i{
+ color: grey;
+}
+
+.BtnPanel button :hover{
+ color: whitesmoke;
+}
+
+.search-input-notes{
+  font-family: roboto-regular, serif;
+  height: 30px;
+  border-radius: 3px;
+  text-align:center;
+}
+
+.addNoteBtns input[type="radio"]{
+  display:none;
+  
+}
+
+
+
+.addNotePanel{
+ 
+box-shadow: 0.5px 0.5px 0.5px 0.5px #999999;
+margin-right:30%;
+margin-left: 30%;
+display:flex;
+justify-content: center;
+border-radius: 3px;
+border:1px solid #666;
+padding:6px 0px;
+margin-bottom:50px;
+}
+
+.addInputPanel{
+ display:flex;
+ flex-grow:1;
+  margin-left: 5px;
+ border:none;
+
+}
+
+.addNoteBtns i{
+  font-size: 1.5rem;
+  color: rgb(207, 199, 199);
+
+}
+
+
+.addNoteBtns input[type="radio"]:checked+label{
+  color: #db2828;
+}
+
+.addNoteBtns label{
+  padding:2px;
+  margin-right:14px;
+}
+
+.addNoteBtns i:hover{
+  font-size: 1.5rem;
+  color: teal;
+}
+
+
+
+.addBtnNotes{
+  color: black;
+  transition: background-color 1s ease;
+}
+
+.addBtnNotes :hover{
+  color: teal;
+}
+
+.notes-header{
+  display: inline;
+}
+
+
+/* Animation
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 24em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+} */
+
+
+

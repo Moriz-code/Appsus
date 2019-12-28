@@ -8,10 +8,10 @@ export default class NotesFilter extends React.Component {
   }
 
   render() {
-    return <div>
-        <a><i className="mag-input fas fa-search"></i></a>
-      <input type="text" className="search-input" placeholder="looking for specific note?" value={this.props.filterBy.name}
-        onChange={this.onSearch} name="filterBy"></input>
+    return <div className="notes-container">
+      <a><i className="mag-input fas fa-search"></i>
+      <input type="text" className="search-input-notes" placeholder="looking for specific note?" value={this.props.filterBy.name}
+        onChange={this.onSearch} name="filterBy"></input></a>
     </div>
   }
 }
