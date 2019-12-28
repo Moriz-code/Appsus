@@ -19,7 +19,7 @@ export default class Txt extends React.Component {
     // let noteInfo = (cmp.info)
     return (<React.Fragment>
       <div style={{backgroundColor: bcColor}} >
-        <textarea onChange={this.onTextChange} onClick={this.onEdit} value={cmp.info}></textarea>
+        <textarea onChange={this.onTextChange} onClick={this.onEdit} defaultValue={cmp.info}></textarea>
         <BtnsPanel cmp={cmp} onDelete={onDelete} onChangeBcColor={onChangeBcColor} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
       </div>
     </React.Fragment>

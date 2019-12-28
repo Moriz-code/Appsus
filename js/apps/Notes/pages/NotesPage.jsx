@@ -18,12 +18,12 @@ export default class NotesPage extends React.Component {
   }
 
   loadNotes = () => {
-    NoteService.getNotes(this.state.filterBy).then(notes => {this.setState({ allNotes: notes})}), 
-    this.render()
+    NoteService.getNotes(this.state.filterBy).then(notes => { this.setState({ allNotes: notes }) }),
+      this.render()
   }
 
   onFilter = (changeFilterField) => {
-    this.setState(prevState => ({filterBy : prevState.filterBy , ...changeFilterField}) ,this.loadNotes)
+    this.setState(prevState => ({ filterBy: prevState.filterBy, ...changeFilterField }), this.loadNotes)
 
   }
 
@@ -81,21 +81,36 @@ export default class NotesPage extends React.Component {
   render() {
     return (
       <div>
+        <NotesFilter filterBy={this.state.filterBy} onFilter={this.onFilter}></NotesFilter>
+
         <button className="addBtnNotes" onClick={this.onAdd}><img src="..\assets\imgs\Notes-imgs\plusIcon.png" /></button>
 
         <input type="text" onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />
 
-        <NotesFilter filterBy={this.state.filterBy} onFilter={this.onFilter}></NotesFilter>
+        {/* <ul onChange={this.setComponent}>
+          <li value="NoteTxt">Txt</li>
+          <li value="NoteImg">Img</li>
+          <li value="NoteTodos"></li>
+          <li value="NoteVideo"></li>
+        </ul> */}
 
-        <select onChange={this.setComponent}>
+        <div class="icon-bar">
+          <a class="active" href="#"><i class="fa fa-home"></i></a>
+          <a><i class="fa fa-search"></i></a>
+          <a><i class="fa fa-envelope"></i></a>
+          <a><i class="fa fa-globe"></i></a>
+          <a><i class="fa fa-trash"></i></a>
+        </div>
+
+        {/* <select onChange={this.setComponent}>
           <option value="NoteTxt">T</option>
-          <option value="NoteImg">Image</option>
+          <option value="NoteImg"></option>
           <option value="NoteTodos">To-Do</option>
           <option value="NoteVideo">Video</option>
-        </select>
+        </select> */}
 
-        {this.state.allNotes.length > 0 && <NotesList onTextChange={this.onTextChange} onUpdate={this.onUpdate} onChangeBcColor={this.onChangeBcColor} 
-        onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
+        {this.state.allNotes.length > 0 && <NotesList onTextChange={this.onTextChange} onUpdate={this.onUpdate} onChangeBcColor={this.onChangeBcColor}
+          onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
         }
       </div>
     )

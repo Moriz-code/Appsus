@@ -15,6 +15,11 @@ export default class BtnsPanel extends React.Component {
     this.props.onChangeBcColor(ev)
   }
 
+
+
+
+
+
   render() {
 
     return (
