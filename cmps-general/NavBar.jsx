@@ -2,7 +2,7 @@ const { NavLink } = ReactRouterDOM
 
 export default function NavBar() {
   return <nav>
-    <ul className="NavBar">
+    <ul className="main-nav-bar flex align-center clean-list">
       <li><NavLink activeClassName="active" to="/" exact>Home</NavLink></li>
       <li><NavLink activeClassName="active" to="/emails">Email</NavLink></li>
       <li><NavLink activeClassName="active" to="/notes">Notes</NavLink></li>

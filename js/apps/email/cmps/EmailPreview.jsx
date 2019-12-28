@@ -36,6 +36,7 @@ export default class EmailPreview extends React.Component {
             
                 <li className={`email-container flex space-between align-center ${this.checkIfRead()}`}>
                    <div className="flex align-center">
+                       
                     <p className="email-from">{props.email.from}</p>
                     <p className="email-subject">{props.email.subject} </p>
                     <p className="email-body">{(props.email.body).substring(0, 100)+'...'}</p>

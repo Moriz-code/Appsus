@@ -41,10 +41,10 @@ export default class SideNav extends React.Component {
             <button onClick={this.props.toggleIsComposing}>Compose <i className="fas fa-plus"></i></button>
             </div>
            <div className="side-nav-3btn">
-            <button onClick={this.filterEmails} name="inbox"> <i class="fas fa-inbox"></i> Inbox <i class="far fa-circle"></i> {this.countOfUnRead()}</button>
-            <button onClick={this.filterEmails} name="starred" ><i className="fas fa-star"></i> Starred({this.countOfStars()})</button>
-            <button onClick={this.filterEmails} name="sentMail"> <i class="fas fa-paper-plane"></i> Sent mail</button>
-            <button ><i className="far fa-trash-alt"></i> Trash</button>
+            <button className="inbox" onClick={this.filterEmails} name="inbox"> <i className="inbox fas fa-inbox"></i> Inbox{this.countOfUnRead()}</button>
+            <button className="starred" onClick={this.filterEmails} name="starred" ><i className="starred fas fa-star"></i> Starred({this.countOfStars()})</button>
+            <button className="sentMail" onClick={this.filterEmails} name="sentMail"> <i className="sentMail fas fa-paper-plane"></i> Sent mail</button>
+            <button className="trash"><i className="trash far fa-trash-alt"></i> Trash</button>
             </div>
         </div>
     }

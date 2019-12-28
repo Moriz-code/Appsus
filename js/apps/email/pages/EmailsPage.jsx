@@ -10,7 +10,7 @@ export default class EmailsPage extends React.Component {
     state = {
         emails: [],
         isComposing: false,
-        filterBy: '',
+        filterBy: 'inbox',
         searchBy: ''
     }
 
@@ -22,7 +22,8 @@ export default class EmailsPage extends React.Component {
         console.log('load state ', this.state.filterBy)
         EmailService.getEmails(this.state.filterBy).then(emails => {
             this.setState({ emails })
-        }) &&
+        }) 
+        &&
             EmailService.getEmails(this.state.searchBy).then(emails => {
                 this.setState({ emails })
             })
@@ -81,21 +82,22 @@ export default class EmailsPage extends React.Component {
 
 
     onSetFilter = (filterName) => {
-        // console.log(filterName);
+        console.log('emailpage', filterName);
         // console.log(this.state);
-        this.setState(prevState => ({
-            filterBy: prevState.filterBy = filterName,
-            isComposing: false
+        this.setState(prevState => {
+            prevState.filterBy = filterName;
+            console.log('this.state omg', this.state);
+            prevState.isComposing = false
             //  console.log('this.state',this.state);
-        }), () => this.loadEmails()
-        )
+        }, () => this.loadEmails())
+        // ,()=>console.log(this.state), () => this.loadEmails(),()=>console.log(this.state)
     }
 
 
     onFilterSearch = (filterBy) => {
         console.log('coraljjj', filterBy)
         this.setState(prevState =>
-            ({ filterBy: prevState.searchBy, ...filterBy }), () => this.loadEmails());
+            ({ searchBy: prevState.searchBy, ...filterBy }), () => this.loadEmails());
     }
 
 
@@ -104,13 +106,13 @@ export default class EmailsPage extends React.Component {
 
             {!this.state.isComposing ? (<div className=" body-container flex">
                 <div className="left-side">
-                <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
+                    <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
                 </div>
                 <div className="right-side flex column">
-                    <div className="flex">
-                    <Filter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter}></Filter>
-                    <SearchEmail searchBy={this.state.searchBy} onFilterSearch={this.onFilterSearch}></SearchEmail>
-                    
+                    <div className="filtering-row flex flex-end">
+                        <Filter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter}></Filter>
+                        <SearchEmail searchBy={this.state.searchBy} onFilterSearch={this.onFilterSearch}></SearchEmail>
+
                     </div>
                     <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>
                 </div>
