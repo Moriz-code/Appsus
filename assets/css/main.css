@@ -6,6 +6,15 @@
   background-color: blueviolet;
 } */
 
+.main-nav-bar{
+  height: 50px;
+}
+
+.main-nav-bar >*:not(:last-child){
+margin-right: 20px;
+}
+
+
 @font-face {
   font-family: roboto-regular;
   src: url(../Fonts/Roboto-Regular.ttf);
@@ -58,7 +67,7 @@ body {
   height: 100vh;
   flex: 1;
   overflow-y: auto;
-  background-color: rgb(245, 245, 245);
+  /* background-color: rgb(245, 245, 245); */
 }
 
 /* right-side */
@@ -77,14 +86,16 @@ body {
   margin-bottom: 20px;
   height: 30px;
   width: 250px;
-  border: 0px;
-  background-color: rgb(230, 230, 230);
+  /* border: 0px; */
+  border: 1px solid rgb(71, 110, 202);
+  border-radius: 7px;
+  /* background-color: rgb(230, 230, 230); */
 }
 
 .search-input {
   border: 0px;
   width: 220px;
-  background-color: rgb(230, 230, 230);
+  /* background-color: rgb(230, 230, 230); */
 }
 
 .mag-input {
@@ -96,22 +107,23 @@ body {
 .filter-section {
   height: 30px;
   width: 80px;
-  border: 0px;
+  border: 1px solid rgb(71, 110, 202);;
+  border-radius: 7px;
   margin-right: 20px;
-  background-color: rgb(230, 230, 230);
+  /* background-color: rgb(230, 230, 230); */
   font-family: roboto-regular, serif;
   padding-left: 8px;
 }
 
-/* mail */
-
-.email-and-btn-container{
-  padding-bottom: 20px;
+.filtering-row{
+  margin-right: 10px;
 }
 
+/* mail */
+
 .email-container {
-  height: 40px;
-  border-bottom: 1px solid rgb(199, 199, 199);
+  height:80px;
+  border-bottom: 1px solid rgb(241, 241, 241);
   z-index: -1;
   width: 84vw;
 }
@@ -125,14 +137,14 @@ body {
 .email-from {
   width:100px;
   padding-left: 12px;
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .email-subject {
   /* width:1000px; */
   font-size: 16px;
   padding-left: 50px;
-  color:teal;
+  color:rgb(71, 110, 202);;
 }
 
 .email-body{
@@ -152,6 +164,21 @@ body {
   background-color: white
 }
 
+
+.read-email{
+  color:rgb(71, 110, 202);
+
+}
+
+.delete-email{
+  color:rgb(255, 78, 34)
+
+}
+
+.star-email{
+  color:rgb(212, 196, 52)
+}
+
 /* sideNav- left-side */
 
 
@@ -164,6 +191,7 @@ border-right: 1px solid  rgb(233, 233, 233);
   flex: 0 0 200px;
   overflow: hidden;
   text-align: center;
+
 }
 
 .side-nav-3btn button {
@@ -172,15 +200,19 @@ border-right: 1px solid  rgb(233, 233, 233);
   padding-top: 60px;
   text-align: center;
   font-family: roboto-regular, serif;
+  color:rgb(71, 110, 202);
+  font-size:14px;
 } 
+
 
 .compose-btn button{
   border: 0px;
-  width:100px;
+  width:120px;
   height: 40px;
   border-radius: 10px;
   font-size: 15px;
-  background-color:teal;;
+  color:white;
+  background-color:rgb(71, 110, 202);
 
 }
 
@@ -216,5 +248,9 @@ border-right: 1px solid  rgb(233, 233, 233);
 
 .align-center {
   align-items: center;
+}
+
+.flex-end{
+  justify-content:flex-end;
 }
 
