@@ -9,7 +9,7 @@ export default class Filter extends React.Component {
 
     render() {
         return <div>
-            <select class="select-filter" onChange={this.onChangefilter}>
+            <select className="filter-section" onChange={this.onChangefilter}>
                 <option value="all">All</option>
                 <option value="read">Read</option>
                 <option value="unread">Unread</option>

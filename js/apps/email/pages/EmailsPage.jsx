@@ -107,8 +107,11 @@ export default class EmailsPage extends React.Component {
                 <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
                 </div>
                 <div className="right-side flex column">
-                    <SearchEmail searchBy={this.state.searchBy} onFilterSearch={this.onFilterSearch}></SearchEmail>
+                    <div className="flex">
                     <Filter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter}></Filter>
+                    <SearchEmail searchBy={this.state.searchBy} onFilterSearch={this.onFilterSearch}></SearchEmail>
+                    
+                    </div>
                     <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>
                 </div>
 
