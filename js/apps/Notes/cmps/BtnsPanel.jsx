@@ -12,12 +12,8 @@ export default class BtnsPanel extends React.Component {
 
   onChangeBcColor = (ev) => {
     console.log(ev.target.value);
-    
     this.props.onChangeBcColor(ev)
   }
-
-
-
 
   render() {
 
@@ -25,7 +21,6 @@ export default class BtnsPanel extends React.Component {
       <div>
         <button onClick={this.onDelete}>Delete</button>
         <button onClick={this.onUpdate}>Update</button>
-
 
         <div className="color" onChange={this.onChangeBcColor}>
 

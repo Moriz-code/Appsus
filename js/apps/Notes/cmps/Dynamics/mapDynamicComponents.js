@@ -5,7 +5,6 @@ import NoteVideo from './NoteVideo.jsx'
 
 const MapDynamicComponents = (props) => {
   const selectedNote = props.cmp
-  
   switch (selectedNote.type) {
     case 'NoteImg':
       return <NoteImg {...props} />

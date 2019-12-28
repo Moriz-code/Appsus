@@ -19,17 +19,17 @@ function createNotes() {
 
 
 function getNotes(filterBy) { 
-  console.log( 'filterBy' , filterBy );
-  
-  if (filterBy.name) return Promise.resolve(gNotes.filter(note =>{
-    return note.name.includes(filterBy.name)
+  if (filterBy) return Promise.resolve(gNotes.filter(note =>{
+    return note.info.includes(filterBy)
   }))
-  return Promise.resolve([...gNotes])
+  else{
+    return Promise.resolve([...gNotes])
+  }
+  
 }
 
 
 function saveNote(noteDetails) {
-  console.log(noteDetails)
   let note = AddNote.createNote(noteDetails.type, noteDetails.isPinned, noteDetails.info, noteDetails.isEdit)
   gNotes = [...gNotes, note]
   storageService.store('saveNote', gNotes)
@@ -49,7 +49,6 @@ function deleteNote(note) {
 }
 
 function editNote(updatedNote) {
-  console.log('editNote' , updatedNote);
   let noteIdx = gNotes.findIndex(note => note.id === updatedNote.id)
   let notes = [...gNotes]
   notes[noteIdx] = updatedNote

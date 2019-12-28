@@ -1,6 +1,8 @@
 import BtnsPanel from '../BtnsPanel.jsx'
 export default class Txt extends React.Component {
 
+ 
+
   onEdit = () => {
     this.props.onEdit(this.props.cmp)
   }
@@ -10,15 +12,14 @@ export default class Txt extends React.Component {
   }
 
 
-
   render() {
     const { cmp, onDelete, onUpdate, onChangeBcColor, onEdit } = this.props;
 
     let bcColor = (cmp.style.bccolor)
+    // let noteInfo = (cmp.info)
     return (<React.Fragment>
-      
       <div style={{backgroundColor: bcColor}} >
-        <textarea onChange={this.onTextChange} onClick={this.onEdit} defaultValue={this.props.cmp.info}></textarea>
+        <textarea onChange={this.onTextChange} onClick={this.onEdit} value={cmp.info}></textarea>
         <BtnsPanel cmp={cmp} onDelete={onDelete} onChangeBcColor={onChangeBcColor} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
       </div>
     </React.Fragment>

@@ -9,7 +9,7 @@ export default class NotesPage extends React.Component {
     selectedNote: { type: 'NoteTxt', isPinned: false, info: '', id: null, style: { bccolor: '' } },
     //render all notes
     allNotes: [],
-    filterBy: {name: '' , type: ''}
+    filterBy: ''
 
   }
 
@@ -18,12 +18,12 @@ export default class NotesPage extends React.Component {
   }
 
   loadNotes = () => {
-    NoteService.getNotes(this.state.filterBy).then(response => { this.setState({ allNotes: response }) })
+    NoteService.getNotes(this.state.filterBy).then(notes => {this.setState({ allNotes: notes})}), 
+    this.render()
   }
 
   onFilter = (changeFilterField) => {
-    this.setState(prevState => ({filterBy : {...prevState.filterBy , ...changeFilterField}}) , 
-    this.Notes);
+    this.setState(prevState => ({filterBy : prevState.filterBy , ...changeFilterField}) ,this.loadNotes)
 
   }
 
@@ -35,12 +35,10 @@ export default class NotesPage extends React.Component {
 
   onTextChange = (ev) => {
     let info = ev.target.value
-    console.log('info onTextChange', info);
     this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, info: info } }), this.loadNotes)
   }
 
   onChangeBcColor = (ev) => {
-    console.log(ev.target.value);
     let color = ev.target.value
     this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, style: { bccolor: color } } }), this.loadNotes)
   }
@@ -57,7 +55,6 @@ export default class NotesPage extends React.Component {
 
   onUpdate = () => {
     let updatedInfo = this.state.selectedNote
-    console.log('onUpdate - this.state.selectedNote', updatedInfo);
     NoteService.editNote(updatedInfo).then(() => {
       this.cleanSelectedNote();
       this.loadNotes();
@@ -84,10 +81,6 @@ export default class NotesPage extends React.Component {
   render() {
     return (
       <div>
-        {/* <input placeholder="looking for specific Note?"></input> */}
-        {/* <input className="search" type="text" placeholder="looking for specific note?" value={this.state.filterBy.name}
-        onChange={this.changeFilter} name="name"></input> */}
-
         <button className="addBtnNotes" onClick={this.onAdd}><img src="..\assets\imgs\Notes-imgs\plusIcon.png" /></button>
 
         <input type="text" onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />
