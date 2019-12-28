@@ -6,28 +6,23 @@
   background-color: blueviolet;
 } */
 
-
 @font-face {
-  font-family: roboto-regular ;
+  font-family: roboto-regular;
   src: url(../Fonts/Roboto-Regular.ttf);
 }
 
 @font-face {
-  font-family: roboto-bold ;
+  font-family: roboto-bold;
   src: url(../Fonts/Roboto-Bold.ttf);
 }
 
-
-
 /* EMAILS CSS*/
-
 
 /* Base */
 
 * {
   box-sizing: border-box;
 }
-
 
 html {
   font-family: roboto-regular, serif;
@@ -43,15 +38,13 @@ a {
   visibility: hidden;
 }
 
-body{
-  margin:0;
+body {
+  margin: 0;
 }
 
-
-.body-container{
+.body-container {
   height: 100vh;
 }
-
 
 /* list helpers */
 
@@ -61,66 +54,93 @@ body{
   list-style-type: none;
 }
 
-.emails-list-container{
+.emails-list-container {
   height: 100vh;
-  flex:1;
+  flex: 1;
   overflow-y: auto;
 }
 
 /* right-side */
 
-.right-side{
-  flex:1;
+.right-side {
+  flex: 1;
   margin-left: 20px;
 }
 
-.email-container{
-border-bottom: 1px solid rgb(199, 199, 199);
-z-index: -1;
-}
 
-.unread{
-  background-color:rgb(245, 245, 245);
-}
 
-.read{
-  background-color:rgb(160, 45, 45);
-}
 
 
 /* search */
-.search-email{
-padding-left: 8px;
-margin-bottom: 20px;
-height: 30px;
-width: 250px;
-border: 0px;
-background-color: rgb(230, 230, 230);
-}
 
-.search-input{
+.search-email {
+  padding-left: 8px;
+  margin-bottom: 20px;
+  height: 30px;
+  width: 250px;
   border: 0px;
-  width:220px;
   background-color: rgb(230, 230, 230);
 }
 
-/* filter */
-/* .select-filter{
+.search-input {
+  border: 0px;
+  width: 220px;
+  background-color: rgb(230, 230, 230);
+}
 
-} */
+.mag-input{
+  opacity: 30%;
+}
+
+/* filter */
+
+.filter-section {
+  height: 30px;
+  width: 80px;
+  border: 0px;
+  margin-right: 20px;
+  background-color: rgb(230, 230, 230);
+  font-family: roboto-regular, serif;
+  padding-left: 8px;
+
+}
+/* mail */
+
+.email-container {
+  height: 40px;
+  border-bottom: 1px solid rgb(199, 199, 199);
+  z-index: -1;
+}
+
+.email-from{
+padding-left: 12px;
+}
+
+.email-subject{
+font-size: 14px;
+}
+
+.email-date{
+  font-size: 14px;
+}
+
+.unread {
+  background-color: rgb(245, 245, 245);
+}
+
+.read {
+  background-color: white
+}
 
 /* sideNav- left-side */
 
-
-.sideNav{
+.sideNav {
   flex: 0 0 200px;
   overflow: hidden;
   text-align: center;
-
 }
 
-
-.sideNav button{
+.sideNav button {
   background-color: #ffffff;
   border: 0px;
   padding-top: 20px;
@@ -128,14 +148,12 @@ background-color: rgb(230, 230, 230);
   font-family: roboto-regular, serif;
 }
 
-.email-profile-pic{
+.email-profile-pic {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  margin-left:15px;
+  margin-left: 15px;
 }
-
-
 
 /* flex helpers */
 
@@ -159,69 +177,71 @@ background-color: rgb(230, 230, 230);
   align-items: center;
 }
 
-
-
-
 /* notes css */
-.addBtnNotes img{
-  width:50px;
 
+.addBtnNotes img {
+  width: 50px;
 }
 
-.AllNotes div{
+.AllNotes div {
   background-color: beige;
-  margin:10px;
- width: 50%;
- height: 50px;
-
- 
-  
+  margin: 10px;
+  width: 50%;
+  height: 50px;
 }
 
-.notesImgs img{
-width:90px;
-border-radius:5px;
+.notesImgs img {
+  width: 90px;
+  border-radius: 5px;
 }
 
 /* colorpicker */
-
 
 /* input[type="radio"] {
   display: none;
 } */
 
-input[type="radio"]:checked + label span {
+input[type="radio"]:checked+label span {
   transform: scale(1.25);
-
 }
-input[type="radio"]:checked + label .red {
+
+input[type="radio"]:checked+label .red {
   border: 2px solid #711313;
 }
-input[type="radio"]:checked + label .orange {
+
+input[type="radio"]:checked+label .orange {
   border: 2px solid #873a08;
 }
-input[type="radio"]:checked + label .yellow {
+
+input[type="radio"]:checked+label .yellow {
   border: 2px solid #816102;
 }
-input[type="radio"]:checked + label .olive {
+
+input[type="radio"]:checked+label .olive {
   border: 2px solid #505a0b;
 }
-input[type="radio"]:checked + label .green {
+
+input[type="radio"]:checked+label .green {
   border: 2px solid #0e4e1d;
 }
-input[type="radio"]:checked + label .teal {
+
+input[type="radio"]:checked+label .teal {
   border: 2px solid #003633;
 }
-input[type="radio"]:checked + label .blue {
+
+input[type="radio"]:checked+label .blue {
   border: 2px solid #103f62;
 }
-input[type="radio"]:checked + label .violet {
+
+input[type="radio"]:checked+label .violet {
   border: 2px solid #321a64;
 }
-input[type="radio"]:checked + label .purple {
+
+input[type="radio"]:checked+label .purple {
   border: 2px solid #501962;
 }
-input[type="radio"]:checked + label .pink {
+
+input[type="radio"]:checked+label .pink {
   border: 2px solid #851554;
 }
 
@@ -232,46 +252,55 @@ label {
   margin-right: 5px;
   cursor: pointer;
 }
+
 label:hover span {
   transform: scale(1.25);
 }
+
 label span {
   display: block;
   width: 100%;
   height: 100%;
   transition: transform 0.2s ease-in-out;
-    border-radius: 50%;
-
+  border-radius: 50%;
 }
+
 label span.red {
   background: #db2828;
 }
+
 label span.orange {
   background: #f2711c;
 }
+
 label span.yellow {
   background: #fbbd08;
 }
+
 label span.olive {
   background: #b5cc18;
 }
+
 label span.green {
   background: #21ba45;
 }
+
 label span.teal {
   background: #00b5ad;
 }
+
 label span.blue {
   background: #2185d0;
 }
+
 label span.violet {
   background: #6435c9;
 }
+
 label span.purple {
   background: #a333c8;
 }
+
 label span.pink {
   background: #e03997;
 }
-
-

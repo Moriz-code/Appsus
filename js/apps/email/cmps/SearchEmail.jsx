@@ -12,7 +12,7 @@ export default class SearchEmail extends React.Component {
     render() {
         return <div className="search-email flex align-center">
         <input className="search-input"  type="text"  name="searchBy" value={this.props.searchBy} placeholder="Search..." onChange={this.changeInput}></input>
-        <img className="mag-input" width="12px" height="12px" src="assets/imgs/Email-imgs/magnifying-glass.svg"/>
+        <a><i className="mag-input fas fa-search"></i></a>
         </div>
     }
 }
