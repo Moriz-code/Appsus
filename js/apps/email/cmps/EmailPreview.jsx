@@ -31,20 +31,27 @@ export default class EmailPreview extends React.Component {
 
     render() {
         const props = this.props;
-        return <div className="email-and-btn-container flex space-between "> <Link to={`/emails/${props.email.id}`}>
-            <div className="">
-            <li className={`email-container flex space-between  ${this.checkIfRead()}`}>
-                <p className="email-from">{props.email.from}</p>
-                <p className="email-subject">{props.email.subject} </p>
-                <p className="email-date">{props.email.sentAt}</p>
-            </li>
-            </div>
+        return <div className="email-and-btn-container flex"> <Link to={`/emails/${props.email.id}`}>
+            
+            
+                <li className={`email-container flex space-between align-center ${this.checkIfRead()}`}>
+                   <div className="flex align-center">
+                    <p className="email-from">{props.email.from}</p>
+                    <p className="email-subject">{props.email.subject} </p>
+                    <p className="email-body">{(props.email.body).substring(0, 100)+'...'}</p>
+                    </div>
+                    <p className="email-date">{props.email.sentAt}</p>
+                </li>
         </Link>
-        <div>
-            <button className="read-email" onClick={this.onChangeBcgColor}>{this.props.email.isRead ? <i className="fas fa-bookmark"></i> : <i className="far fa-bookmark"></i>}</button>
-            <button className="delete-email" onClick={this.onDeleteEmail}><i className="far fa-trash-alt"></i></button>
-            <button className="star-email" onClick={this.onStarEmail}>{this.props.email.isStar ? <i className="far fa-star"></i> : <i className="fas fa-star"></i>}</button>
+
+
+            <div className="email-btn flex">
+                <button className="read-email" onClick={this.onChangeBcgColor}>{this.props.email.isRead ? <i className="fas fa-bookmark"></i> : <i className="far fa-bookmark"></i>}</button>
+                <button className="delete-email" onClick={this.onDeleteEmail}><i className="far fa-trash-alt"></i></button>
+                <button className="star-email" onClick={this.onStarEmail}>{this.props.email.isStar ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}</button>
             </div>
+
+
         </div>
     }
 }
