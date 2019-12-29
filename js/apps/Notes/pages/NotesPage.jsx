@@ -41,7 +41,6 @@ export default class NotesPage extends React.Component {
   onChangeBcColor = (ev) => {
     let color = ev.target.value
     this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, style: { bccolor: color } } }), this.onUpdate)
-
   }
 
 
@@ -57,8 +56,6 @@ export default class NotesPage extends React.Component {
   onUpdate = () => {
     this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, isOnEdit: false } }), () => {
       let updatedInfo = this.state.selectedNote
-      console.log('this.state.selectedNote' , this.state.selectedNote);
-      
       NoteService.editNote(updatedInfo).then(() => {
         // this.cleanSelectedNote();
         this.loadNotes();
@@ -74,7 +71,7 @@ export default class NotesPage extends React.Component {
         this.loadNotes()
       })
     })
-    console.log('updatedInfo- onEdit ', this.state.selectedNote);
+
   }
 
   onDelete = (note) => {
@@ -91,7 +88,6 @@ export default class NotesPage extends React.Component {
 
   setPlaceholder = () => {
     const noteType = (this.state.selectedNote.type)
-    console.log('setPlaceholder', noteType);
     switch (noteType) {
       case 'NoteVideo':
         return this.setState({ placeholder: 'Enter youtube URL...' });
@@ -108,7 +104,7 @@ export default class NotesPage extends React.Component {
 
     return <React.Fragment>
 
-      <h1 className="notes-container">Miss Notes</h1>
+      {/* <h1 className="notes-container">Miss Notes</h1> */}
 
       <div className="addNotePanel heartbeat">
         <input type="text" className="addInputPanel heartbeat" placeholder={this.state.placeholder} onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />

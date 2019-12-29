@@ -1,0 +1,47 @@
+
+@media only screen and (max-width: 1180px) {
+  .notes-container{
+    padding-right: 30px;
+    padding-left: 30px;
+    column-count: 2;
+    column-gap: 10px; 
+ 
+  }
+
+  .addNotePanel{
+    box-shadow: 0.5px 0.5px 0.5px 0.5px #999999;
+    margin-right:10%;
+    margin-left: 10%;
+  }
+}
+
+  @media only screen and (max-width: 750px) {
+    .notes-container{
+      padding-right: 30px;
+      padding-left: 30px;
+      column-count: 1;
+      column-gap: 10px; 
+   
+    }
+
+    .addNotePanel{
+      box-shadow: 0.5px 0.5px 0.5px 0.5px #999999;
+      margin-right:2%;
+      margin-left: 2%;
+      margin-bottom: 2%;
+    }
+
+    .notes-search{
+      display: flex;
+      justify-content: center;
+    }
+
+    .addNoteBtns i{
+      color: rgb(71, 110, 202);
+    
+    }
+
+    
+}
+
+

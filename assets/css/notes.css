@@ -6,7 +6,7 @@
 
 
 .notesImgs img {
-  width: 250px;
+  width: 310px;
   height:auto;
   border-radius: 5px;
 }
@@ -84,6 +84,7 @@ label span.pink {
 
 .Note{
 padding-top: 10px;
+padding-bottom: 10px;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -229,8 +230,6 @@ margin-bottom:50px;
 }
 
 
-
-
 .BtnPanel{
   text-align: center;
   margin-top: 10px;
@@ -239,16 +238,15 @@ margin-bottom:50px;
 
 
 .Note textarea{
-background-color: whitesmoke;
-resize: none;
-width:100%;
-border:none;
- }
+  min-width: 320px;
+  /* width: min-content; */
+  background-color: whitesmoke;
+  resize: none;border:none;
+}
 
 
 .txtTA{
   resize: none;
-  width: 100%;
   /* margin-top: 15px; */
   margin-bottom: 15px;
   border:none;
