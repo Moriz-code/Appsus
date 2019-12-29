@@ -4,6 +4,7 @@ import SideNav from '../cmps/SideNav.jsx';
 import AddNewMail from '../cmps/AddNewMail.jsx'
 import SearchEmail from '../cmps/SearchEmail.jsx'
 import Filter from '../cmps/Filter.jsx'
+import EmailDetails from '../cmps/EmailDetails.jsx';
 
 
 export default class EmailsPage extends React.Component {
@@ -11,22 +12,25 @@ export default class EmailsPage extends React.Component {
         emails: [],
         isComposing: false,
         filterBy: 'inbox',
-        searchBy: ''
+        searchBy: '',
+        selectedMail: null
     }
 
     componentDidMount() {
         this.loadEmails();
     }
 
+
+
     loadEmails = () => {
         console.log('load state ', this.state.filterBy)
         // if(this.state.searchBy===''){
-            EmailService.getEmails(this.state.filterBy,this.state.searchBy).then(emails => {
-                this.setState({ emails })
-            })
+        EmailService.getEmails(this.state.filterBy, this.state.searchBy).then(emails => {
+            this.setState({ emails })
+        })
         // }
-       
-            
+
+
         // else    EmailService.getEmails(this.state.searchBy).then(emails => {
         //         this.setState({ emails })
         //     })
@@ -57,6 +61,23 @@ export default class EmailsPage extends React.Component {
         this.loadEmails();
 
     }
+
+    onSetSelectedEmail = (emailId) => {
+        console.log('grandpa')
+        EmailService.getEmailById(emailId).then((email) => {
+            this.setState({ selectedMail: email })
+
+            })
+
+                // this.loadEmails();
+       
+    }
+
+    onGoBack = () => {
+        this.setState({ selectedMail: null });
+        this.loadEmails();
+    }
+
 
     toggleIsComposing = () => {
         this.setState(prevState => ({
@@ -91,7 +112,8 @@ export default class EmailsPage extends React.Component {
         this.setState(prevState => {
             prevState.filterBy = filterName;
             console.log('this.state omg', this.state);
-            prevState.isComposing = false
+            prevState.isComposing = false;
+            prevState.selectedMail = null
             //  console.log('this.state',this.state);
         }, () => this.loadEmails())
         // ,()=>console.log(this.state), () => this.loadEmails(),()=>console.log(this.state)
@@ -105,6 +127,9 @@ export default class EmailsPage extends React.Component {
     }
 
 
+
+
+
     render() {
         return <div className="main-email-app">
 
@@ -116,25 +141,41 @@ export default class EmailsPage extends React.Component {
 
 
                 <div className="right-side flex column align-items">
+
+
                     <div className="filtering-row flex flex-end">
                         <Filter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter}></Filter>
                         <SearchEmail searchBy={this.state.searchBy} onFilterSearch={this.onFilterSearch}></SearchEmail>
-
                     </div>
-                    {this.state.emails.length === 0 ? <img class="no-results-pic" src="assets/imgs/Email-imgs/error.PNG"/>
-                    :
-                        <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>}
-                </div>
+
+{/* 
+                    {this.state.emails.length === 0 ?
+                        <img class="no-results-pic" src="assets/imgs/Email-imgs/error.PNG" />
+                        : <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>
+                           }
+                      
+                    </div> */}
+
+                {this.state.emails.length === 0 ?
+                    <img class="no-results-pic" src="assets/imgs/Email-imgs/error.PNG" />
+                    : <div>{!this.state.selectedMail ? <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}onSetSelectedEmail={this.onSetSelectedEmail}></EmailList>
+                        : <EmailDetails email={this.state.selectedMail} onGoBack={this.onGoBack} ></EmailDetails>}
+                    </div>
+                }</div>
+
+
+
 
             </div>) : (<div className=" body-container flex">
 
-                <div className="left-side">
-                    <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
-                </div>
-                <div className="right-side ">
-                    <AddNewMail toggleIsComposing={this.toggleIsComposing} loadEmails={this.loadEmails}></AddNewMail>
-                </div>
-            </div>)}
+            <div className="left-side">
+                <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
+            </div>
+            <div className="right-side ">
+                <AddNewMail toggleIsComposing={this.toggleIsComposing} loadEmails={this.loadEmails}></AddNewMail>
+            </div>
+        </div>)
+    }
 
         </div>
     }

@@ -28,28 +28,35 @@ export default class EmailPreview extends React.Component {
 
     }
 
+    onSetSelectedEmail = () => {
+        
+        
+        console.log('child emailpreview', this.props.email.id)
+        this.props.onSetSelectedEmail(this.props.email.id)
+    }
+
 
     render() {
         const props = this.props;
         console.log('coral', utils.getRandomColor())
-        return <div className={`email-and-btn-container flex `}>
+        return <div className={`email-and-btn-container flex `}onClick={this.onSetSelectedEmail}>
 
-            <Link to={`/emails/${props.email.id}`}>
+            {/* <Link to={`/emails/${props.email.id}`}> */}
 
-                <li className={`email-container flex space-between align-center ${this.checkIfRead()} `}>
-                    <div className="flex align-center">
-                        <span style={{ backgroundColor: utils.getRandomColor() }} className="round-name">
-                            <span className="round-name-text">{props.email.from.substring(0, 1)}
-                            </span>
+            <li className={`email-container flex space-between align-center ${this.checkIfRead()} `} >
+                <div className="flex align-center">
+                    <span style={{ backgroundColor: utils.getRandomColor() }} className="round-name">
+                        <span className="round-name-text">{props.email.from.substring(0, 1)}
                         </span>
+                    </span>
 
-                        <p className="email-from">{props.email.from}</p>
-                        <p className="email-subject">{props.email.subject} </p>
-                        <p className="email-body">{(props.email.body).substring(0, 100) + '...'}</p>
-                    </div>
-                    <p className="email-date">{props.email.sentAt}</p>
-                </li>
-            </Link>
+                    <p className="email-from">{props.email.from}</p>
+                    <p className="email-subject">{props.email.subject} </p>
+                    <p className="email-body">{(props.email.body).substring(0, 100) + '...'}</p>
+                </div>
+                <p className="email-date">{props.email.sentAt}</p>
+            </li>
+            {/* </Link> */}
 
 
             <div className={`email-btn flex ${this.checkIfRead()}`}>

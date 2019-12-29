@@ -21,9 +21,16 @@ export default class EmailList extends React.Component {
 
     }
 
+    
+    onSetSelectedEmail=(emailId)=>{
+        this.props.onSetSelectedEmail(emailId)
+        console.log('dad emailpreview',emailId)
+
+    }
+
     render() {
         const props = this.props;
-        return <ul className="emails-list-container clean-list" >{props.emails.map((email, i) => <EmailPreview onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}  key={i} email={email} ></EmailPreview>)}</ul>
+        return <ul className="emails-list-container clean-list" >{props.emails.map((email, i) => <EmailPreview onSetSelectedEmail={this.onSetSelectedEmail} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}  key={i} email={email} ></EmailPreview>)}</ul>
     }
 
 

@@ -2,6 +2,9 @@
 
 export default class EmailDetails extends React.Component {
 
+    onGoBack = () => {
+        this.props.onGoBack()
+    }
 
 
     render() {
@@ -10,7 +13,7 @@ export default class EmailDetails extends React.Component {
                 <h2>{this.props.email.subject}</h2>
                 <p>{this.props.email.sentAt}</p>
                 <p>{this.props.email.body}</p>
-                <button>Back</button>
+                <button onClick={this.onGoBack}>Back</button>
             </li>
         </div>
     }
