@@ -18,8 +18,8 @@ export default class Txt extends React.Component {
     let bcColor = (cmp.style.bccolor)
     // let noteInfo = (cmp.info)
     return (<React.Fragment>
-      <div className="Note swing-in-top-fwd">
-        <div onClick={this.onEdit} className="note-content" style={{ backgroundColor: bcColor }} >
+      <div  className="Note swing-in-top-fwd" style={{ backgroundColor: bcColor }} >
+        <div className="note-content" onClick={this.onEdit}>
             <textarea onChange={this.onTextChange} defaultValue={cmp.info}></textarea>
         </div>
         <div>

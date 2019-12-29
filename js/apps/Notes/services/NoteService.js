@@ -56,6 +56,7 @@ function editNote(updatedNote) {
   notes[noteIdx] = updatedNote
   gNotes = notes;
   storageService.store('notes', gNotes)
+  console.log('gNotes' , gNotes);
   return Promise.resolve(editNote)
 }
 

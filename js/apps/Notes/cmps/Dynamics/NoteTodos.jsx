@@ -9,6 +9,8 @@ export default class Todos extends React.Component {
     this.props.onTextChange(ev)
   }
 
+  
+
   render() {
     const { cmp, onDelete, onUpdate, onSetBcColor } = this.props;
     let bcColor = (cmp.style.bccolor)
