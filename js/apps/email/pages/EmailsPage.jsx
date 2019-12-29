@@ -20,13 +20,17 @@ export default class EmailsPage extends React.Component {
 
     loadEmails = () => {
         console.log('load state ', this.state.filterBy)
-        EmailService.getEmails(this.state.filterBy).then(emails => {
-            this.setState({ emails })
-        })
-            &&
-            EmailService.getEmails(this.state.searchBy).then(emails => {
+        // if(this.state.searchBy===''){
+            EmailService.getEmails(this.state.filterBy,this.state.searchBy).then(emails => {
                 this.setState({ emails })
             })
+        // }
+       
+            
+        // else    EmailService.getEmails(this.state.searchBy).then(emails => {
+        //         this.setState({ emails })
+        //     })
+
     }
 
 
@@ -54,20 +58,20 @@ export default class EmailsPage extends React.Component {
 
     }
 
-    // toggleIsComposing = () => {
-    //     this.setState(prevState => ({
-    //         isComposing: !prevState.isComposing
-    //     }), () => console.log(this.state.isComposing)
-    //     )
-    // }
-
-
     toggleIsComposing = () => {
         this.setState(prevState => ({
-            isComposing: true
+            isComposing: !prevState.isComposing
         }), () => console.log(this.state.isComposing)
         )
     }
+
+
+    // toggleIsComposing = () => {
+    //     this.setState(prevState => ({
+    //         isComposing: true
+    //     }), () => console.log(this.state.isComposing)
+    //     )
+    // }
 
 
 
@@ -105,28 +109,33 @@ export default class EmailsPage extends React.Component {
         return <div className="main-email-app">
 
             {!this.state.isComposing ? (<div className=" body-container flex">
+
                 <div className="left-side">
                     <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
                 </div>
-                <div className="right-side flex column">
+
+
+                <div className="right-side flex column align-items">
                     <div className="filtering-row flex flex-end">
                         <Filter filterBy={this.state.filterBy} onSetFilter={this.onSetFilter}></Filter>
                         <SearchEmail searchBy={this.state.searchBy} onFilterSearch={this.onFilterSearch}></SearchEmail>
 
                     </div>
-                    <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>
+                    {this.state.emails.length === 0 ? <img class="no-results-pic" src="assets/imgs/Email-imgs/error.PNG"/>
+                    :
+                        <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>}
                 </div>
 
             </div>) : (<div className=" body-container flex">
-            
+
                 <div className="left-side">
                     <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
                 </div>
                 <div className="right-side ">
-                    <AddNewMail loadEmails={this.loadEmails}></AddNewMail>
-                    </div>
-                </div>)}
-    
+                    <AddNewMail toggleIsComposing={this.toggleIsComposing} loadEmails={this.loadEmails}></AddNewMail>
+                </div>
+            </div>)}
+
         </div>
     }
-            }
+}

@@ -123,6 +123,12 @@ body {
   margin-right: 10px;
 }
 
+.no-results-pic {
+  width: 982px;
+  height: 678px;
+  margin-left: 250px;
+}
+
 /* mail */
 
 .email-container {
@@ -136,6 +142,21 @@ body {
   background-color: white;
   border: 0px;
   font-size: 16px;
+}
+
+.round-name {
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+}
+
+.round-name-text{
+  position: relative;
+  font-weight: bold;
+  left: 20px;
+  bottom: 65px;
 }
 
 .email-from {
@@ -159,14 +180,6 @@ body {
 
 .email-date {
   font-size: 14px;
-}
-
-.unread {
-  background-color: rgb(245, 245, 245);
-}
-
-.read {
-  background-color: white
 }
 
 .read-email {
@@ -237,12 +250,12 @@ body {
 
 /* new-mail */
 
-.new-mail-form{
-  margin:5px;
-  padding:25px;
+.new-mail-form {
+  margin: 5px;
+  padding: 25px;
 }
 
-.new-mail-form-header{
+.new-mail-form-header {
   width: 1350px;
   height: 40px;
   font-size: 15px;
@@ -274,19 +287,26 @@ body {
   border: 0px;
   width: 1350px;
   margin-bottom: 20px;
-  padding-left:10px;
+  padding-left: 10px;
 }
 
-.send-new-mail{
-border: 0px;
-width: 220px;
-height: 40px;
-border-radius: 10px;
-font-size: 15px;
-color: black;
-background-color: rgb(212, 196, 52);
-cursor: pointer;
+.send-new-mail {
+  border: 0px;
+  width: 220px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: 15px;
+  color: black;
+  background-color: rgb(212, 196, 52);
+  cursor: pointer;
+}
 
+.unread {
+  background-color: rgb(245, 245, 245);
+}
+
+.read {
+  background-color: white
 }
 
 /* flex helpers */
