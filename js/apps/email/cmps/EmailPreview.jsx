@@ -9,20 +9,23 @@ export default class EmailPreview extends React.Component {
     }
 
 
-    onChangeBcgColor = () => {
+    onChangeBcgColor = (ev) => {
+        ev.stopPropagation();
         // console.log(this.props.email.isRead)
         this.checkIfRead()
         this.props.onChangeBcgColor(this.props.email.id)
         // console.log('child', this.props.email.id)
     }
 
-    onDeleteEmail = () => {
+    onDeleteEmail = (ev) => {
+        ev.stopPropagation();
         this.props.onDeleteEmail(this.props.email.id)
         // console.log('child', this.props.email.id)
 
     }
 
-    onStarEmail = () => {
+    onStarEmail = (ev) => {
+        ev.stopPropagation();
         this.props.onStarEmail(this.props.email.id)
         console.log('child', this.props.email.id)
 
@@ -38,7 +41,9 @@ export default class EmailPreview extends React.Component {
 
     render() {
         const props = this.props;
-        console.log('coral', utils.getRandomColor())
+        console.log('coral', props.email.from)
+        console.log('coral', props.email.from.substring(0, 1))
+
         return <div className={`email-and-btn-container flex`}onClick={this.onSetSelectedEmail}>
 
             {/* <Link to={`/emails/${props.email.id}`}> */}
@@ -47,10 +52,7 @@ export default class EmailPreview extends React.Component {
                 <div className="flex align-center">
                     {/* <span style={{ backgroundColor: utils.getRandomColor() }} className="round-name"> */}
                     <span className="round-name">
-
-                    
-                        <span className="round-name-text">{props.email.from.substring(0, 1)}
-                        </span>
+                        <span className="round-name-text"> {props.email.from.substring(0, 1)}</span>
                     </span>
 
                     <p className="email-from">{props.email.from}</p>
@@ -63,9 +65,9 @@ export default class EmailPreview extends React.Component {
 
 
             <div className={`email-btn flex ${this.checkIfRead()}`}>
-                <button className="read-email" onClick={this.onChangeBcgColor}>{this.props.email.isRead ? <i className=" rotate-center fas fa-bookmark"></i> : <i className="rotate-center far fa-bookmark"></i>}</button>
-                <button className="delete-email" onClick={this.onDeleteEmail}><i className="rotate-center far fa-trash-alt"></i></button>
-                <button className="star-email" onClick={this.onStarEmail}>{this.props.email.isStar ? <i className="rotate-center fas fa-star"></i> : <i className="rotate-center far fa-star"></i>}</button>
+                <button className="read-email" onClick={(ev)=>this.onChangeBcgColor(ev)}>{this.props.email.isRead ? <i className=" rotate-center fas fa-bookmark"></i> : <i className="rotate-center far fa-bookmark"></i>}</button>
+                <button className="delete-email" onClick={(ev)=>this.onDeleteEmail(ev)}><i className="rotate-center far fa-trash-alt"></i></button>
+                <button className="star-email" onClick={(ev)=>this.onStarEmail(ev)}>{this.props.email.isStar ? <i className="rotate-center fas fa-star"></i> : <i className="rotate-center far fa-star"></i>}</button>
             </div>
 
 
