@@ -16,14 +16,15 @@ export default class BtnsPanel extends React.Component {
   }
 
 
-
-
-
-
   render() {
+console.log(this.props.cmp);
 
     return (
+     
+      
       <React.Fragment>
+     
+      <div className={this.props.cmp.isOnEdit ? '' : 'display-none'}> 
       <div className="BtnPanel">
 
         <button><i className="fas fa-map-pin fa-lg"></i></button>
@@ -57,6 +58,7 @@ export default class BtnsPanel extends React.Component {
         <input type="radio" name="color" id="purple" value="#BA89DB" />
         <label htmlFor="purple"><span className="purple"></span></label>
 
+      </div>
       </div>
 
       </React.Fragment>

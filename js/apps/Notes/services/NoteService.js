@@ -49,6 +49,8 @@ function deleteNote(note) {
 }
 
 function editNote(updatedNote) {
+  console.log('updatedNote' , updatedNote);
+  
   let noteIdx = gNotes.findIndex(note => note.id === updatedNote.id)
   let notes = [...gNotes]
   notes[noteIdx] = updatedNote

@@ -4,13 +4,14 @@ export default {
   createNote
 }
 
-function createNote(type = 'NoteTxt', isPinned = false, info = '', id = utils.getRandomID(), style = {bccolor: ''}) {
+function createNote(type = 'NoteTxt', isPinned = false, info = '', id = utils.getRandomID(), style = {bccolor: ''}, isOnEdit = false) {
   let note = {
     type,
     isPinned,
     id,
     info,
-    style
+    style,
+    isOnEdit
   }
   return note
 }

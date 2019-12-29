@@ -321,7 +321,7 @@ cursor: pointer;
   animation: rotate-center 0.6s ease-in-out both;
 }
 
-@-webkit-keyframes rotate-center {
+@keyframes rotate-center {
   0% {
     transform: rotate(0);
   }
@@ -330,11 +330,7 @@ cursor: pointer;
   }
 }
 
-@keyframes rotate-center {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+
+.display-none{
+  display:none;
 }

@@ -26,7 +26,7 @@ input[type="radio"] {
 }
 
 .color label:hover span {
-  transform: scale(1.25);
+  animation: heartbeat 1s ease-in-out infinite both;
 }
 
 .color label span {
@@ -35,6 +35,7 @@ input[type="radio"] {
   height: 100%;
   transition: transform 0.2s ease-in-out;
   border-radius: 50%;
+  border: 1px solid #00000069;
 }
 
 label span.red {
@@ -96,8 +97,8 @@ align-items: center;
 
 .Note textarea{
  resize: none;
- width: 90%;
- margin-top: 15px;
+ width: 100%;
+ /* margin-top: 15px; */
  margin-bottom: 15px;
  border:none;
 }
@@ -114,10 +115,7 @@ align-items: center;
 
 }
 
-.BtnPanel button i:hover{
-  color: whitesmoke;
- 
- }
+
 
 
 .search-input-notes{
@@ -137,25 +135,15 @@ align-items: center;
 
 
 .addNotePanel{
- 
 box-shadow: 0.5px 0.5px 0.5px 0.5px #999999;
- 
 margin-right:30%;
- 
 margin-left: 30%;
- 
 display:flex;
- 
 justify-content: center;
- 
 align-items: center;
- 
 border-radius: 3px;
- 
 border:1px solid #666;
- 
 padding:6px 0px;
- 
 margin-bottom:50px;
 }
 
@@ -185,7 +173,7 @@ margin-bottom:50px;
 
 .addNoteBtns i:hover{
   font-size: 1.5rem;
-  color: teal;
+  color: rgb(71, 110, 202);
 }
 
 
@@ -196,7 +184,7 @@ margin-bottom:50px;
 }
 
 .addBtnNotes :hover{
-  color: teal;
+  color: rgb(71, 110, 202);
 }
 
 .notes-header{
@@ -208,70 +196,35 @@ margin-bottom:50px;
 	        animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
 }
 
-
  @-webkit-keyframes swing-in-top-fwd {
   0% {
-    -webkit-transform: rotateX(-100deg);
             transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
             transform-origin: top;
     opacity: 0;
   }
   100% {
-    -webkit-transform: rotateX(0deg);
             transform: rotateX(0deg);
-    -webkit-transform-origin: top;
             transform-origin: top;
     opacity: 1;
   }
 }
 @keyframes swing-in-top-fwd {
   0% {
-    -webkit-transform: rotateX(-100deg);
             transform: rotateX(-100deg);
-    -webkit-transform-origin: top;
             transform-origin: top;
     opacity: 0;
   }
   100% {
-    -webkit-transform: rotateX(0deg);
             transform: rotateX(0deg);
-    -webkit-transform-origin: top;
             transform-origin: top;
     opacity: 1;
   }
 }
 
 .heartbeat {
-	        animation: heartbeat 3s ease-in-out both;
+	    animation: heartbeat 3s ease-in-out both;
 }
 
-
- @-webkit-keyframes heartbeat {
-  from {
-            transform: scale(1);
-            transform-origin: center center;
-            animation-timing-function: ease-out;
-  }
-  10% {
-            transform: scale(0.91);
-            animation-timing-function: ease-in;
-  }
-  17% {
-            transform: scale(0.98);
-            animation-timing-function: ease-out;
-  }
-  33% {
-  
-            transform: scale(0.87);
-            animation-timing-function: ease-in;
-  }
-  45% {
-
-            transform: scale(1);
-            animation-timing-function: ease-out;
-  }
-}
 @keyframes heartbeat {
   from {
 
