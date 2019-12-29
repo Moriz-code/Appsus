@@ -1,13 +1,13 @@
 import NoteService from '../services/NoteService.js'
-import mapDynamicComponents from '../cmps/Dynamics/mapDynamicComponents.js'
 import NotesList from '../cmps/NotesList.jsx'
 import NotesFilter from '../cmps/NotesFilter.jsx'
+// import AddNotePanel from '../cmps/AddNotePanel.jsx'
 // import AddNote from '../cmps/AddNote.jsx'
 
 export default class NotesPage extends React.Component {
   state = {
     selectedNote: { type: 'NoteTxt', isPinned: false, info: '', id: null, style: { bccolor: '' }, isOnEdit: false },
-
+    placeholder: 'Enter your TEXT...',
     //render all notes
     allNotes: [],
     filterBy: '',
@@ -20,6 +20,7 @@ export default class NotesPage extends React.Component {
   loadNotes = () => {
     NoteService.getNotes(this.state.filterBy).then(notes => { this.setState({ allNotes: notes }) }),
       this.render;
+      
   }
 
   onFilter = (changeFilterField) => {
@@ -29,7 +30,8 @@ export default class NotesPage extends React.Component {
 
   setComponent = (ev) => {
     let type = ev.target.value;
-    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, type } }), this.loadNotes)
+    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, type } }),this.setPlaceholder)
+    
   }
 
 
@@ -56,26 +58,25 @@ export default class NotesPage extends React.Component {
 
 
   onUpdate = () => {
-    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, isOnEdit: false } }))
-    let updatedInfo = this.state.selectedNote
-    NoteService.editNote(updatedInfo).then(() => {
-      // this.cleanSelectedNote();
-      this.loadNotes;
+    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, isOnEdit: false } }), () => {
+      let updatedInfo = this.state.selectedNote
+      NoteService.editNote(updatedInfo).then(() => {
+        // this.cleanSelectedNote();
+        this.loadNotes();
+      })
     })
+
   }
 
   onEdit = (note) => {
-    this.setState({ selectedNote: note })
-    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, isOnEdit: true } })), (() => {
-      NoteService.editNote(this.state.selectedNote).then(() => {
-        this.loadNotes
+    let editedNote = { ...note, isOnEdit: true }
+    this.setState({ selectedNote: editedNote }, () => {
+      NoteService.editNote(editedNote).then(() => {
+        this.loadNotes()
       })
     })
-    console.log('updatedInfo- onEdit ', this.state.selectedNote); 
+    console.log('updatedInfo- onEdit ', this.state.selectedNote);
   }
-
-
-
 
   onDelete = (note) => {
     NoteService.deleteNote(note)
@@ -85,43 +86,62 @@ export default class NotesPage extends React.Component {
       })
   }
 
+  cleanSelectedNote = () => {
+    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, isPinned: false, info: '', id: null, style: { bccolor: '' }, isSelected: false, isOnEdit: false } }), this.loadNotes)
+  }
+
+  setPlaceholder = () => {
+    const noteType = (this.state.selectedNote.type)
+    console.log('setPlaceholder' , noteType);
+    switch (noteType) {
+      case 'NoteVideo':
+      return this.setState({ placeholder:'Enter youtube URL...' });     
+      case 'NoteImg':
+      return this.setState({ placeholder:'Enter image URL...' })       
+      case 'NoteTodos':
+      return this.setState({ placeholder:'Enter your TODO title...' })
+      case 'NoteTxt':
+      return this.setState({ placeholder:'Enter your TEXT...' })
+    }
+  }
+
+  render() {
+
+    return <React.Fragment>
+
+      <h1 className="notes-container">Miss Notes</h1>
 
 
-cleanSelectedNote = () => {
-  this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, isPinned: false, info: '', id: null, style: { bccolor: '' }, isSelected: false, isOnEdit: false } }), this.loadNotes)
-}
 
+      <div className="addNotePanel heartbeat">
+        <input type="text" className="addInputPanel heartbeat" placeholder={this.state.placeholder} onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />
+        <div id="radio" className="addNoteBtns" onChange={this.setComponent}>
 
-render() {
-  return <React.Fragment>
+          <input type="radio" id="radio1" value="NoteTxt" name="radio" />
+          <label htmlFor="radio1"><i className="far fa-sticky-note fa-lg"></i></label>
 
-    <h1 className="notes-container">Miss Notes</h1>
+          <input type="radio" id="radio2" value="NoteImg" name="radio" />
+          <label htmlFor="radio2"><i className="far fa-images fa-lg"></i></label>
 
-    <div className="addNotePanel heartbeat">
-      <input type="text" className="addInputPanel heartbeat" onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />
-      <div id="radio" className="addNoteBtns" onChange={this.setComponent}>
-        <input type="radio" id="radio1" value="NoteTxt" name="radio" />
-        <label htmlFor="radio1"><i className="far fa-sticky-note fa-lg"></i></label>
-        <input type="radio" id="radio2" value="NoteImg" name="radio" />
-        <label htmlFor="radio2"><i className="far fa-images fa-lg"></i></label>
-        <input type="radio" id="radio3" value="NoteTodos" name="radio" />
-        <label htmlFor="radio3"><i className="fas fa-list-ul fa-lg"></i></label>
-        <input type="radio" id="radio4" value="NoteVideo" name="radio" />
-        <label htmlFor="radio4"><i className="fab fa-youtube-square fa-lg"></i></label>
+          <input type="radio" id="radio3" value="NoteTodos" name="radio" />
+          <label htmlFor="radio3"><i className="fas fa-list-ul fa-lg"></i></label>
+
+          <input type="radio" id="radio4" value="NoteVideo" name="radio" />
+          <label htmlFor="radio4"><i className="fab fa-youtube-square fa-lg"></i></label>
+        </div>
+
+        <button className="addBtnNotes" onClick={this.onAdd}><i className="fas fa-plus-circle fa-lg"></i></button>
+
+      </div>
+      <NotesFilter filterBy={this.state.filterBy} onFilter={this.onFilter}></NotesFilter>
+      <div className="notes-container">
+        {this.state.allNotes.length > 0 && <NotesList onTextChange={this.onTextChange} onUpdate={this.onUpdate} onChangeBcColor={this.onChangeBcColor}
+          onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
+        }
       </div>
 
-      <button className="addBtnNotes" onClick={this.onAdd}><i className="fas fa-plus-circle fa-lg"></i></button>
-
-    </div>
-    <NotesFilter filterBy={this.state.filterBy} onFilter={this.onFilter}></NotesFilter>
-    <div className="notes-container">
-      {this.state.allNotes.length > 0 && <NotesList onTextChange={this.onTextChange} onUpdate={this.onUpdate} onChangeBcColor={this.onChangeBcColor}
-        onEdit={this.onEdit} selectedNote={this.state.seletedNote} onDelete={this.onDelete} allNotes={this.state.allNotes}></NotesList>
-      }
-    </div>
-
-  </React.Fragment>
-}
+    </React.Fragment>
+  }
 }
 
 

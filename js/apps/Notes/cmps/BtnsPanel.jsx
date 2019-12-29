@@ -5,40 +5,33 @@ export default class BtnsPanel extends React.Component {
   }
 
   onDelete = () => {
-    console.log('dlete', this.props.cmp);
     this.props.onDelete(this.props.cmp)
   }
 
 
   onChangeBcColor = (ev) => {
-    console.log(ev.target.value);
     this.props.onChangeBcColor(ev)
   }
 
 
   render() {
-console.log(this.props.cmp);
-
     return (
      
       
       <React.Fragment>
-     
-      <div className={this.props.cmp.isOnEdit ? '' : 'display-none'}> 
+      <div className={this.props.cmp.isOnEdit ? 'NotePanel' : 'display-none'}> 
       <div className="BtnPanel">
 
         <button><i className="fas fa-map-pin fa-lg"></i></button>
         <button><i className="far fa-copy fa-lg"></i></button>
 
         <button onClick={this.onUpdate}><i className="far fa-save fa-lg"></i></button>
-
         <button onClick={this.onDelete}><i className="far fa-trash-alt fa-lg"></i></button>
-
       </div>
       <div className="color" onChange={this.onChangeBcColor}>
 
-        <input type="radio" name="color" id="red" value="red" value="#FF8B94" />
-        <label><span className="red"></span></label>
+        <input type="radio" name="color" id="red" value="#FF8B94" />
+        <label htmlFor="red"><span className="red"></span></label>
       
         <input type="radio" name="color" id="yellow" value="#fbbd08" />
         <label htmlFor="yellow"><span className="yellow"></span></label>
