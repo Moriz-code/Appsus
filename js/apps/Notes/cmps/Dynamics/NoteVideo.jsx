@@ -9,9 +9,6 @@ export default class Video extends React.Component {
     this.props.onTextChange(ev)
   }
 
-  // onTextChange = (ev) => {
-  //   this.props.onTextChange(ev)
-  // }
 
   getUrlId = () => {
     let url = this.props.cmp.info;

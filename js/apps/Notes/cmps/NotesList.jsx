@@ -14,7 +14,7 @@ export default class NotesList extends React.Component {
 
   render() {
     const { allNotes, onEdit, onDelete, selectedNote, onUpdate, onChangeBcColor, onTextChange } = this.props
-    console.log('NotesList' , this.props);
+   
     
     return <React.Fragment> {
       allNotes.map((cmp, i) => <MapDynamicComponents key={i} onChangeBcColor={onChangeBcColor} 

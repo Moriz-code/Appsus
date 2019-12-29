@@ -8,9 +8,10 @@ export default {
   deleteNote,
   getNoteById,
   editNote,
+  createToDo
 }
 
- let gNotes = [AddNote.createNote('NoteTxt', false, 'Add your first note...')];
+ let gNotes = storageService.load('notes') || [AddNote.createNote('NoteTxt', false, 'Add your first note...')];
 
 function createNotes() {
   storageService.store('createNotes', gNotes)
@@ -32,7 +33,7 @@ function getNotes(filterBy) {
 function saveNote(noteDetails) {
   let note = AddNote.createNote(noteDetails.type, noteDetails.isPinned, noteDetails.info, noteDetails.isEdit)
   gNotes = [...gNotes, note]
-  storageService.store('saveNote', gNotes)
+  storageService.store('notes', gNotes)
   return Promise.resolve(note)
 }
 
@@ -49,14 +50,16 @@ function deleteNote(note) {
 }
 
 function editNote(updatedNote) {
-  console.log('updatedNote' , updatedNote);
   
   let noteIdx = gNotes.findIndex(note => note.id === updatedNote.id)
   let notes = [...gNotes]
   notes[noteIdx] = updatedNote
   gNotes = notes;
   storageService.store('notes', gNotes)
-  console.log('gNotes' , gNotes);
   return Promise.resolve(editNote)
 }
 
+function createToDo(list){
+  var checkboxs = list.split(',');
+  console.log(checkboxs);
+}
