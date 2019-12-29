@@ -22,8 +22,8 @@ export default class EmailsPage extends React.Component {
         console.log('load state ', this.state.filterBy)
         EmailService.getEmails(this.state.filterBy).then(emails => {
             this.setState({ emails })
-        }) 
-        &&
+        })
+            &&
             EmailService.getEmails(this.state.searchBy).then(emails => {
                 this.setState({ emails })
             })
@@ -117,11 +117,16 @@ export default class EmailsPage extends React.Component {
                     <EmailList emails={this.state.emails} onStarEmail={this.onStarEmail} onDeleteEmail={this.onDeleteEmail} onChangeBcgColor={this.onChangeBcgColor}></EmailList>
                 </div>
 
-            </div>) : (<div className="flex column">
-                <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing}></SideNav>
-                <AddNewMail loadEmails={this.loadEmails}></AddNewMail>
-            </div>)}
-
+            </div>) : (<div className=" body-container flex">
+            
+                <div className="left-side">
+                    <SideNav emails={this.state.emails} onSetFilter={this.onSetFilter} toggleIsComposing={this.toggleIsComposing} ></SideNav>
+                </div>
+                <div className="right-side ">
+                    <AddNewMail loadEmails={this.loadEmails}></AddNewMail>
+                    </div>
+                </div>)}
+    
         </div>
     }
-}
+            }

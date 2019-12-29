@@ -38,10 +38,10 @@ export default class SideNav extends React.Component {
             <img className="email-profile-pic" src="assets/imgs/Email-imgs/profile.jpg"/>
             <h4 className="user-name">Coral Solomon</h4>
             <div className="compose-btn">
-            <button onClick={this.props.toggleIsComposing}>Compose <i className="fas fa-plus"></i></button>
+            <button onClick={this.props.toggleIsComposing}>Compose <i className="plus fas fa-plus"></i></button>
             </div>
-           <div className="side-nav-3btn">
-            <button className="inbox" onClick={this.filterEmails} name="inbox"> <i className="inbox fas fa-inbox"></i> Inbox{this.countOfUnRead()}</button>
+           <div className="side-nav-3btn flex column">
+            <button className="inbox " onClick={this.filterEmails} name="inbox"> <i className="inbox fas fa-inbox"></i> Inbox({this.countOfUnRead()})</button>
             <button className="starred" onClick={this.filterEmails} name="starred" ><i className="starred fas fa-star"></i> Starred({this.countOfStars()})</button>
             <button className="sentMail" onClick={this.filterEmails} name="sentMail"> <i className="sentMail fas fa-paper-plane"></i> Sent mail</button>
             <button className="trash"><i className="trash far fa-trash-alt"></i> Trash</button>

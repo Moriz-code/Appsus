@@ -28,13 +28,14 @@ export default class AddNewMail extends React.Component {
 
 
     render() {
-        return <form className="flex column">
-            <input type="text" value={this.state.to} name="to" placeholder="To" onChange={this.inputChange}></input>
+        return <form className="new-mail-form flex column">
+            <p class="new-mail-form-header">New Massage</p>
+            <input className="mail-to" type="text" value={this.state.to} name="to" placeholder="To" onChange={this.inputChange}></input>
             {/* <input type="email" placeholder="Cc"></input> */}
             {/* <input type="email" placeholder="Bcc"></input> */}
-            <input type="text" value={this.state.subject} name="subject" placeholder="Subject" onChange={this.inputChange}></input>
-            <textarea rows="4" value={this.state.body} name="body" cols="50" onChange={this.inputChange}></textarea>
-            <button onClick={this.onSaveEmail}>Send</button>
+            <input className="mail-subject" type="text" value={this.state.subject} name="subject" placeholder="Subject" onChange={this.inputChange}></input>
+            <textarea placeholder="Enter your text here" className="mail-text-area" rows="20" value={this.state.body} name="body" cols="40" onChange={this.inputChange}></textarea>
+            <button className="send-new-mail" onClick={this.onSaveEmail}>Send</button>
         </form>
     }
 }

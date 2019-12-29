@@ -6,14 +6,13 @@
   background-color: blueviolet;
 } */
 
-.main-nav-bar{
+.main-nav-bar {
   height: 50px;
 }
 
-.main-nav-bar >*:not(:last-child){
-margin-right: 20px;
+.main-nav-bar>*:not(:last-child) {
+  margin-right: 20px;
 }
-
 
 @font-face {
   font-family: roboto-regular;
@@ -83,8 +82,6 @@ body {
   margin-left: 6px;
 }
 
-
-
 /* search */
 
 .search-email {
@@ -113,7 +110,8 @@ body {
 .filter-section {
   height: 30px;
   width: 80px;
-  border: 1px solid rgb(71, 110, 202);;
+  border: 1px solid rgb(71, 110, 202);
+  ;
   border-radius: 7px;
   margin-right: 20px;
   /* background-color: rgb(230, 230, 230); */
@@ -121,14 +119,14 @@ body {
   padding-left: 8px;
 }
 
-.filtering-row{
+.filtering-row {
   margin-right: 10px;
 }
 
 /* mail */
 
 .email-container {
-  height:80px;
+  height: 80px;
   border-bottom: 1px solid rgb(241, 241, 241);
   z-index: -1;
   width: 84vw;
@@ -141,7 +139,7 @@ body {
 }
 
 .email-from {
-  width:100px;
+  width: 150px;
   padding-left: 12px;
   /* font-weight: bold; */
 }
@@ -150,10 +148,11 @@ body {
   /* width:1000px; */
   font-size: 16px;
   padding-left: 50px;
-  color:rgb(71, 110, 202);;
+  color: rgb(71, 110, 202);
+  ;
 }
 
-.email-body{
+.email-body {
   font-size: 12px;
   padding-left: 20px;
 }
@@ -170,56 +169,58 @@ body {
   background-color: white
 }
 
-
-.read-email{
-  color:rgb(71, 110, 202);
-
+.read-email {
+  color: rgb(71, 110, 202);
+  cursor: pointer;
 }
 
-.delete-email{
-  color:rgb(255, 78, 34)
-
+.delete-email {
+  color: rgb(255, 78, 34);
+  cursor: pointer;
 }
 
-.star-email{
-  color:rgb(212, 196, 52)
+.star-email {
+  color: rgb(212, 196, 52);
+  cursor: pointer;
 }
 
 /* sideNav- left-side */
 
-
-.left-side{
-padding-right: 20px;
-border-right: 1px solid  rgb(233, 233, 233);
+.left-side {
+  padding-right: 20px;
+  border-right: 1px solid rgb(233, 233, 233);
 }
 
 .sideNav {
   flex: 0 0 200px;
   overflow: hidden;
   text-align: center;
-
 }
 
 .side-nav-3btn button {
- background-color: #ffffff; 
+  background-color: #ffffff;
   border: 0px;
   padding-top: 60px;
   text-align: center;
   font-family: roboto-regular, serif;
-  color:rgb(71, 110, 202);
-  font-size:14px;
-} 
+  color: rgb(71, 110, 202);
+  font-size: 14px;
+  cursor: pointer;
+}
 
-
-.compose-btn button{
+.compose-btn button {
   border: 0px;
-  width:120px;
+  width: 120px;
   height: 40px;
   border-radius: 10px;
   font-size: 15px;
-  color:white;
-  background-color:rgb(71, 110, 202);
+  color: white;
+  background-color: rgb(71, 110, 202);
+  cursor: pointer;
+}
 
+.plus:hover {
+  transform: rotateZ(-30deg);
 }
 
 .email-profile-pic {
@@ -229,9 +230,63 @@ border-right: 1px solid  rgb(233, 233, 233);
   margin-left: 15px;
 }
 
-.user-name{
+.user-name {
   padding-bottom: 40px;
   border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+/* new-mail */
+
+.new-mail-form{
+  margin:5px;
+  padding:25px;
+}
+
+.new-mail-form-header{
+  width: 1350px;
+  height: 40px;
+  font-size: 15px;
+  color: white;
+  background-color: rgb(71, 110, 202);
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.mail-to {
+  padding-left: 10px;
+  width: 1350px;
+  border: 0px;
+  border-bottom: 1px solid rgb(223, 223, 223);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.mail-subject {
+  padding-left: 10px;
+  width: 1350px;
+  border: 0px;
+  border-bottom: 1px solid rgb(223, 223, 223);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+
+.mail-text-area {
+  border: 0px;
+  width: 1350px;
+  margin-bottom: 20px;
+  padding-left:10px;
+}
+
+.send-new-mail{
+border: 0px;
+width: 220px;
+height: 40px;
+border-radius: 10px;
+font-size: 15px;
+color: black;
+background-color: rgb(212, 196, 52);
+cursor: pointer;
+
 }
 
 /* flex helpers */
@@ -256,7 +311,30 @@ border-right: 1px solid  rgb(233, 233, 233);
   align-items: center;
 }
 
-.flex-end{
-  justify-content:flex-end;
+.flex-end {
+  justify-content: flex-end;
 }
 
+/* animation */
+
+.rotate-center:hover {
+  animation: rotate-center 0.6s ease-in-out both;
+}
+
+@-webkit-keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -47,9 +47,9 @@ export default class EmailPreview extends React.Component {
 
 
             <div className="email-btn flex">
-                <button className="read-email" onClick={this.onChangeBcgColor}>{this.props.email.isRead ? <i className="fas fa-bookmark"></i> : <i className="far fa-bookmark"></i>}</button>
-                <button className="delete-email" onClick={this.onDeleteEmail}><i className="far fa-trash-alt"></i></button>
-                <button className="star-email" onClick={this.onStarEmail}>{this.props.email.isStar ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}</button>
+                <button className="read-email" onClick={this.onChangeBcgColor}>{this.props.email.isRead ? <i className=" rotate-center fas fa-bookmark"></i> : <i className="rotate-center far fa-bookmark"></i>}</button>
+                <button className="delete-email" onClick={this.onDeleteEmail}><i className="rotate-center far fa-trash-alt"></i></button>
+                <button className="star-email" onClick={this.onStarEmail}>{this.props.email.isStar ? <i className="rotate-center fas fa-star"></i> : <i className="rotate-center far fa-star"></i>}</button>
             </div>
 
 
