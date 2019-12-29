@@ -65,11 +65,9 @@ export default class EmailsPage extends React.Component {
     onSetSelectedEmail = (emailId) => {
         console.log('grandpa')
         EmailService.getEmailById(emailId).then((email) => {
+            EmailService.ChangeBcgColor(emailId),
             this.setState({ selectedMail: email })
-
             })
-
-                // this.loadEmails();
        
     }
 

@@ -44,7 +44,7 @@ export default class SideNav extends React.Component {
             <button className="inbox " onClick={this.filterEmails} name="inbox"> <i className="inbox fas fa-inbox"></i> Inbox({this.countOfUnRead()})</button>
             <button className="starred" onClick={this.filterEmails} name="starred" ><i className="starred fas fa-star"></i> Starred({this.countOfStars()})</button>
             <button className="sentMail" onClick={this.filterEmails} name="sentMail"> <i className="sentMail fas fa-paper-plane"></i> Sent mail</button>
-            <button className="trash"><i className="trash far fa-trash-alt"></i> Trash</button>
+            {/* <button className="trash"><i className="trash far fa-trash-alt"></i> Trash</button> */}
             </div>
         </div>
     }

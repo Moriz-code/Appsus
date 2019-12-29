@@ -16,7 +16,7 @@ let gEmail = storageService.load('emails') || createEmails();
 
 
 function createEmails() {
-    const emails = [new Email('Booking', 'Coral Solomon', 'Tel Aviv has some last-minute deals!', 'Recommended destinations- We have gathered the best deals in our most popular destinations', false, '27-12-2019', false, false),
+    const emails = [new Email('Booking', 'Coral Solomon', 'ABOUT THE KOALA', 'Though often called the koala “bear,” this cuddly animal is not a bear at all; it is a marsupial, or pouched mammal. After giving birth, a female koala carries her baby in her pouch for about six months. When the infant emerges, it rides on its mothers back or clings to her belly, accompanying her everywhere until it is about a year old.Sleepy Behavior and Eucalyptus Diet Koalas live in eastern Australia, where the eucalyptus trees they love are most plentiful. In fact, they rarely leave these trees, and their sharp claws and opposable digits easily keep them aloft. During the day they doze, tucked into forks or nooks in the trees, sleeping for up to 18 hours.', false, '27-12-2019', false, false),
     new Email('Eged', 'Coral Solomon', 'Rav-Kav Online password reset request', 'We received a request to reset the password for this email address.To complete the action, type the verification code into the page, or follow the link below.If you did not request to reset your Rav-Kav Online password, please ignore this message.', false, '27-12-2019', false, false),
     new Email('FreeIT', 'Coral Solomon', '📢 UA FAMILY: Get $30 Off Orders $100+', '25% OFF the best fleece in the game give the gift warmth ', true, '27-12-2019', false, false),
     new Email('University', 'Coral Solomon', 'Student ID', 'Verify your student status to access the Apple Music Student Membership', true, '27-12-2019', false, false),
@@ -96,6 +96,7 @@ function getEmails(filterBy, searchBy) {
         getEmailById(emailId).then(email => {
             email.isRead = !email.isRead
         })
+        event.stopPropagation();
     }
 
     function deleteEmail(emailId) {

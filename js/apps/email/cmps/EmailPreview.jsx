@@ -39,13 +39,16 @@ export default class EmailPreview extends React.Component {
     render() {
         const props = this.props;
         console.log('coral', utils.getRandomColor())
-        return <div className={`email-and-btn-container flex `}onClick={this.onSetSelectedEmail}>
+        return <div className={`email-and-btn-container flex`}onClick={this.onSetSelectedEmail}>
 
             {/* <Link to={`/emails/${props.email.id}`}> */}
 
             <li className={`email-container flex space-between align-center ${this.checkIfRead()} `} >
                 <div className="flex align-center">
-                    <span style={{ backgroundColor: utils.getRandomColor() }} className="round-name">
+                    {/* <span style={{ backgroundColor: utils.getRandomColor() }} className="round-name"> */}
+                    <span className="round-name">
+
+                    
                         <span className="round-name-text">{props.email.from.substring(0, 1)}
                         </span>
                     </span>
