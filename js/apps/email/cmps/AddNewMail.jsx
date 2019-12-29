@@ -13,6 +13,7 @@ export default class AddNewMail extends React.Component {
         ev.preventDefault();
         EmailService.saveEmail({ ...this.state }).then(() => {
             this.props.loadEmails();
+            this.props.toggleIsComposing();
         })
     }
 

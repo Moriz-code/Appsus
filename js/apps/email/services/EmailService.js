@@ -29,64 +29,105 @@ function createEmails() {
     return emails;
 }
 
-function getEmails(filterBy) {
+function getEmails(filterBy, searchBy) {
     console.log('getemailsssss', filterBy)
-    if (!filterBy || filterBy === 'inbox' || filterBy === 'all' || filterBy === 'sentMail') return Promise.resolve([...gEmail]);
-    else if (filterBy === 'starred'){
-        console.log(gEmail.filter(email => email.isStar));
-        
-        return Promise.resolve(gEmail.filter(email => email.isStar));
+    var filteredEmails;
+    if (searchBy === '') {
+
+
+        if (!filterBy || filterBy === 'inbox' || filterBy === 'all' || filterBy === 'sentMail') filteredEmails = ([...gEmail]);
+        else if (filterBy === 'starred') {
+            // console.log(gEmail.filter(email => email.isStar));
+
+            filteredEmails = (gEmail.filter(email => email.isStar));
+        }
+        else if (filterBy === 'read') filteredEmails = (gEmail.filter(email => email.isRead));
+        else if (filterBy === 'unread') filteredEmails = (gEmail.filter(email => !email.isRead));
+        else if (filterBy === 'trash') filteredEmails = (gEmail.filter(email => email.isTrash));
+
+        return Promise.resolve(filteredEmails)
     }
-    else if (filterBy === 'read') return Promise.resolve(gEmail.filter(email => email.isRead));
-    else if (filterBy === 'unread') return Promise.resolve(gEmail.filter(email => !email.isRead));
-    else if (filterBy === 'trash') return Promise.resolve(gEmail.filter(email => email.isTrash));
-  
-    else return Promise.resolve(gEmail.filter(email => {
-        return ((email.to.includes(filterBy)) || (email.subject.includes(filterBy)) || (email.body.includes(filterBy)))
-    }))
-}
 
-function getEmailById(emailId) {
-    const email = gEmail.find(email => email.id === emailId)
-    return Promise.resolve(email)
-}
+    else {
+        if (!filterBy || filterBy === 'inbox' || filterBy === 'all' || filterBy === 'sentMail') filteredEmails = ([...gEmail]);
+        else if (filterBy === 'starred') {
+            // console.log(gEmail.filter(email => email.isStar));
 
-function ChangeBcgColor(emailId) {
-    getEmailById(emailId).then(email => {
-        email.isRead = !email.isRead
-    })
-}
+            filteredEmails = (gEmail.filter(email => email.isStar));
+        }
+        else if (filterBy === 'read') filteredEmails = (gEmail.filter(email => email.isRead));
+        else if (filterBy === 'unread') filteredEmails = (gEmail.filter(email => !email.isRead));
+        else if (filterBy === 'trash') filteredEmails = (gEmail.filter(email => email.isTrash));
 
-function deleteEmail(emailId) {
-    gEmail = gEmail.filter((email) => email.id !== emailId)
-    storageService.store('emails', gEmail)
-    return Promise.resolve(true)
-}
-
-function starEmail(emailId) {
-    getEmailById(emailId).then(email => {
-        email.isStar = !email.isStar
-    })
-    storageService.store('emails', gEmail)
-
-    // return Promise.resolve(true)
+        return Promise.resolve(filteredEmails.filter(email => {
+            console.log('service else')
+            return ((email.to.includes(searchBy)) || (email.subject.includes(searchBy)) || (email.body.includes(searchBy)))
+        }))
+    }
 }
 
 
 
-function formatDate(date) {
-    var day = date.getDate()
-    var month = date.getMonth() + 1
-    var year = date.getFullYear()
-    return day + '-' + month + '-' + year
-}
+
+    // function getEmails(filterBy,searchBy) {
+    //     console.log('getemailsssss', filterBy)
+    //     if (!filterBy || filterBy === 'inbox' || filterBy === 'all' || filterBy === 'sentMail') return Promise.resolve([...gEmail]);
+    //     else if (filterBy === 'starred'){
+    //         console.log(gEmail.filter(email => email.isStar));
+
+    //         return Promise.resolve(gEmail.filter(email => email.isStar));
+    //     }
+    //     else if (filterBy === 'read') return Promise.resolve(gEmail.filter(email => email.isRead));
+    //     else if (filterBy === 'unread') return Promise.resolve(gEmail.filter(email => !email.isRead));
+    //     else if (filterBy === 'trash') return Promise.resolve(gEmail.filter(email => email.isTrash));
+
+    //     else return Promise.resolve( gEmail.filter(email => {
+    //         console.log('service else')
+    //         return ((email.to.includes(searchBy)) || (email.subject.includes(searchBy)) || (email.body.includes(searchBy)))
+    //     }))
+    // }
+
+    function getEmailById(emailId) {
+        const email = gEmail.find(email => email.id === emailId)
+        return Promise.resolve(email)
+    }
+
+    function ChangeBcgColor(emailId) {
+        getEmailById(emailId).then(email => {
+            email.isRead = !email.isRead
+        })
+    }
+
+    function deleteEmail(emailId) {
+        gEmail = gEmail.filter((email) => email.id !== emailId)
+        storageService.store('emails', gEmail)
+        return Promise.resolve(true)
+    }
+
+    function starEmail(emailId) {
+        getEmailById(emailId).then(email => {
+            email.isStar = !email.isStar
+        })
+        storageService.store('emails', gEmail)
+
+        // return Promise.resolve(true)
+    }
 
 
-function saveEmail(EmailDetails) {
-    const email = new Email('Coral Solomon', EmailDetails.to, EmailDetails.subject, EmailDetails.body, true, formatDate(new Date), false)
-    gEmail = [...gEmail, email];
-    storageService.store('emails', gEmail)
-    return Promise.resolve(email)
-}
+
+    function formatDate(date) {
+        var day = date.getDate()
+        var month = date.getMonth() + 1
+        var year = date.getFullYear()
+        return day + '-' + month + '-' + year
+    }
+
+
+    function saveEmail(EmailDetails) {
+        const email = new Email('Coral Solomon', EmailDetails.to, EmailDetails.subject, EmailDetails.body, true, formatDate(new Date), false)
+        gEmail = [...gEmail, email];
+        storageService.store('emails', gEmail)
+        return Promise.resolve(email)
+    }
 
 
