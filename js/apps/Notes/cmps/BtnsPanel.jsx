@@ -36,33 +36,27 @@ export default class BtnsPanel extends React.Component {
       </div>
       <div className="color" onChange={this.onChangeBcColor}>
 
-        <input type="radio" name="color" id="red" value="red" value="red" />
+        <input type="radio" name="color" id="red" value="red" value="#FF8B94" />
         <label><span className="red"></span></label>
-
-        
-
       
-        <input type="radio" name="color" id="red" value="red" />
-        <label htmlFor="red"><span className="red"></span></label>
-      
-        <input type="radio" name="color" id="yellow" value="yellow" />
+        <input type="radio" name="color" id="yellow" value="#fbbd08" />
         <label htmlFor="yellow"><span className="yellow"></span></label>
         
-        <input type="radio" name="color" id="orange" value="orange" />
+        <input type="radio" name="color" id="orange" value="#FFD3B6" />
         <label htmlFor="orange"><span className="orange"></span></label>
 
-        <input type="radio" name="color" id="green" value="green" />
+        <input type="radio" name="color" id="green" value="#7AB5B5" />
         <label htmlFor="green"><span className="green"></span></label>
 
-        <input type="radio" name="color" id="blue" value="blue" />
+        <input type="radio" name="color" id="blue" value="#476eca" />
         <label htmlFor="blue"><span className="blue"></span></label>
         
-        <input type="radio" name="color" id="pink" value="pink" />
+        <input type="radio" name="color" id="pink" value="#F7B5DF" />
         <label htmlFor="pink"><span className="pink"></span></label>
 
-        
-        <input type="radio" name="color" id="purple" value="purple" />
+        <input type="radio" name="color" id="purple" value="#BA89DB" />
         <label htmlFor="purple"><span className="purple"></span></label>
+
       </div>
 
       </React.Fragment>
