@@ -20,7 +20,6 @@ export default class NotesPage extends React.Component {
   loadNotes = () => {
     NoteService.getNotes(this.state.filterBy).then(notes => { this.setState({ allNotes: notes }) }),
       this.render;
-      
   }
 
   onFilter = (changeFilterField) => {
@@ -30,15 +29,14 @@ export default class NotesPage extends React.Component {
 
   setComponent = (ev) => {
     let type = ev.target.value;
-    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, type } }),this.setPlaceholder)
-    
+    this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, type } }), this.setPlaceholder)
   }
-
 
   onTextChange = (ev) => {
     let info = ev.target.value
     this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, info: info } }), this.loadNotes)
   }
+
 
   onChangeBcColor = (ev) => {
     let color = ev.target.value
@@ -52,7 +50,6 @@ export default class NotesPage extends React.Component {
       .then(() => {
         this.loadNotes();
         this.cleanSelectedNote();
-        this.render();
       })
   }
 
@@ -60,6 +57,8 @@ export default class NotesPage extends React.Component {
   onUpdate = () => {
     this.setState(prevState => ({ selectedNote: { ...prevState.selectedNote, isOnEdit: false } }), () => {
       let updatedInfo = this.state.selectedNote
+      console.log('this.state.selectedNote' , this.state.selectedNote);
+      
       NoteService.editNote(updatedInfo).then(() => {
         // this.cleanSelectedNote();
         this.loadNotes();
@@ -92,16 +91,16 @@ export default class NotesPage extends React.Component {
 
   setPlaceholder = () => {
     const noteType = (this.state.selectedNote.type)
-    console.log('setPlaceholder' , noteType);
+    console.log('setPlaceholder', noteType);
     switch (noteType) {
       case 'NoteVideo':
-      return this.setState({ placeholder:'Enter youtube URL...' });     
+        return this.setState({ placeholder: 'Enter youtube URL...' });
       case 'NoteImg':
-      return this.setState({ placeholder:'Enter image URL...' })       
+        return this.setState({ placeholder: 'Enter image URL...' })
       case 'NoteTodos':
-      return this.setState({ placeholder:'Enter your TODO title...' })
+        return this.setState({ placeholder: 'Enter your TODO title...' })
       case 'NoteTxt':
-      return this.setState({ placeholder:'Enter your TEXT...' })
+        return this.setState({ placeholder: 'Enter your TEXT...' })
     }
   }
 
@@ -110,8 +109,6 @@ export default class NotesPage extends React.Component {
     return <React.Fragment>
 
       <h1 className="notes-container">Miss Notes</h1>
-
-
 
       <div className="addNotePanel heartbeat">
         <input type="text" className="addInputPanel heartbeat" placeholder={this.state.placeholder} onFocus={this.cleanSelectedNote} onChange={this.onTextChange} />

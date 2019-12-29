@@ -20,7 +20,7 @@ export default class Txt extends React.Component {
     return (<React.Fragment>
       <div  className="Note swing-in-top-fwd" style={{ backgroundColor: bcColor }} >
         <div className="note-content" onClick={this.onEdit}>
-            <textarea onChange={this.onTextChange} defaultValue={cmp.info}></textarea>
+            <textarea className="txtTA" onChange={this.onTextChange} defaultValue={cmp.info}></textarea>
         </div>
         <div>
           <BtnsPanel cmp={cmp} onDelete={onDelete} onChangeBcColor={onChangeBcColor} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
