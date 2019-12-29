@@ -95,13 +95,6 @@ align-items: center;
 
 
 
-.Note textarea{
- resize: none;
- width: 100%;
- /* margin-top: 15px; */
- margin-bottom: 15px;
- border:none;
-}
 
 .BtnPanel button , .addBtnNotes{
  cursor: pointer;
@@ -114,9 +107,6 @@ align-items: center;
  color: grey;
 
 }
-
-
-
 
 .search-input-notes{
   font-family: roboto-regular, serif;
@@ -160,8 +150,6 @@ margin-bottom:50px;
   color: rgb(207, 199, 199);
 
 }
-
-
 
 .addNoteBtns label{
   padding:2px;
@@ -243,4 +231,26 @@ margin-bottom:50px;
 
 
 
+.BtnPanel{
+  text-align: center;
+  margin-top: 10px;
+  padding:5px;
+}
 
+
+.Note textarea{
+background-color: whitesmoke;
+resize: none;
+width:100%;
+border:none;
+ }
+
+
+.txtTA{
+  resize: none;
+  width: 100%;
+  /* margin-top: 15px; */
+  margin-bottom: 15px;
+  border:none;
+  min-height: 120px;
+}
