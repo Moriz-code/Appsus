@@ -5,11 +5,6 @@ export default class Video extends React.Component {
     this.props.onEdit(this.props.cmp)
   }
 
-  onTextChange = (ev) => {
-    this.props.onTextChange(ev)
-  }
-
-
   getUrlId = () => {
     let url = this.props.cmp.info;
     let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -24,13 +19,24 @@ export default class Video extends React.Component {
 
   }
 
+  onShift = () =>{
+    this.props.onShift(this.props.cmp)
+  }
+
+
+
+
   render() {
-    const { cmp, onDelete, onUpdate, onChangeBcColor, onEdit ,onTextChange } = this.props;
+    const { cmp, onDelete, onUpdate, onChangeBcColor, onEdit ,onTextChange ,onShift} = this.props;
     let bcColor = (cmp.style.bccolor)
     let url = this.props.cmp.info;
     if (url.includes('youtube')) {
       const videoEmbdedUrl = this.getUrlId()
-      return (<div className="Note" style={{ backgroundColor: bcColor }} onClick={this.onEdit}><iframe src={videoEmbdedUrl}></iframe> 
+      return (
+
+      <div className="Note swing-in-top-fwd" style={{ backgroundColor: bcColor }} onClick={this.onEdit}>
+      <button className="pinBtn" onClick={this.onShift}><i className="fas fa-map-pin fa-lg"></i></button>
+        <iframe src={videoEmbdedUrl}></iframe> 
         <BtnsPanel cmp={cmp} onDelete={onDelete} onTextChange={onTextChange} onChangeBcColor={onChangeBcColor} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
       </div>
       )
@@ -39,7 +45,7 @@ export default class Video extends React.Component {
       return (
         <div>
           <source src={url} type="video/mp4" />
-          <BtnsPanel cmp={cmp} onDelete={onDelete} onChangeBcColor={onChangeBcColor} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
+          <BtnsPanel cmp={cmp} onDelete={onDelete} onShift={onShift} onChangeBcColor={onChangeBcColor} onCopy={onCopy} onEdit={onEdit} onUpdate={onUpdate}></BtnsPanel>
         </div>
       )
     }

@@ -1,4 +1,9 @@
+import NoteService from '../services/NoteService.js'
+
+
+
 export default class BtnsPanel extends React.Component {
+
 
   onUpdate = () => {
     this.props.onUpdate(this.props.cmp)
@@ -17,21 +22,31 @@ export default class BtnsPanel extends React.Component {
     this.props.onTextChange(ev)
   }
 
-  render() {
-    console.log('btnpanelprops', this.props);
+  onCopy = () => {
+    this.props.onCopy(this.props.cmp.info)
 
+  }
+
+  // onShift = () => {
+  //   this.props.onUpdate(this.props.cmp)
+  // }
+
+
+  render() {
+
+    
     return (
 
-      <React.Fragment>
 
+      <React.Fragment>
         <div className={this.props.cmp.isOnEdit ? 'NotePanel' : 'display-none'}>
           <div className="BtnPanel">
 
-            <button><i className="fas fa-map-pin fa-lg"></i></button>
-            <button><i className="far fa-copy fa-lg"></i></button>
+            
+            <button onClick={this.onCopy}><i className="far fa-copy fa-lg"></i></button>
 
             <button onClick={this.onUpdate}><i className="far fa-save fa-lg"></i></button>
-            <button onClick={this.onDelete}><i className="far fa-trash-alt fa-lg"></i></button>
+            <button onClick={this.onDelete} ><i className="far fa-trash-alt fa-lg"></i></button>
           </div>
           <div className="color" onChange={this.onChangeBcColor}>
 
@@ -58,9 +73,9 @@ export default class BtnsPanel extends React.Component {
 
           </div>
 
-          <div className={this.props.cmp.type === 'NoteVideo' ? 'video' : 'display-none'}>
+          {/* <div className={this.props.cmp.type === 'NoteVideo' ? 'video' : 'display-none'}>
             <textarea onChange={this.onTextChange} defaultValue={this.props.cmp.info}></textarea>
-          </div>
+          </div> */}
 
         </div>
 

@@ -16,20 +16,26 @@ export default class Todos extends React.Component {
   // }
 
 
+  onShift = () =>{
+    this.props.onShift(this.props.cmp)
+  }
+
+
 
   render() {
-    const { cmp, onDelete, onUpdate, onChangeBcColor } = this.props;
+    const { cmp, onDelete, onUpdate, onChangeBcColor, onShift } = this.props;
     let bcColor = (cmp.style.bccolor)
     
     return (<React.Fragment>
       <div className="Note" style={{ backgroundColor: bcColor }} onClick={this.onEdit}>
+      <button className="pinBtn" onClick={this.onShift}><i className="fas fa-map-pin fa-lg"></i></button>
         <div>
         <textarea className="txtTA" defaultValue={this.props.cmp.info}></textarea>
        
         </div>
         
               {/* <textarea onChange={this.onTextChange} defaultValue={this.props.cmp.info}></textarea> */}
-       <BtnsPanel cmp={cmp} onChangeBcColor={onChangeBcColor} onDelete={onDelete} onUpdate={onUpdate}></BtnsPanel>
+       <BtnsPanel cmp={cmp} onShift={onShift} onChangeBcColor={onChangeBcColor} onShift={onShift} onCopy={onCopy} onDelete={onDelete} onUpdate={onUpdate}></BtnsPanel>
       </div>
 
     </React.Fragment>)

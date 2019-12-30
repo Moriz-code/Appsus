@@ -13,3 +13,5 @@ export default class Email {
         this.isDelete = isDelete
     }
 }
+
+
