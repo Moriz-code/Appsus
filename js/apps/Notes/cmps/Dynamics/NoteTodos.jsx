@@ -35,7 +35,7 @@ export default class Todos extends React.Component {
         </div>
         
               {/* <textarea onChange={this.onTextChange} defaultValue={this.props.cmp.info}></textarea> */}
-       <BtnsPanel cmp={cmp} onShift={onShift} onChangeBcColor={onChangeBcColor} onShift={onShift} onCopy={onCopy} onDelete={onDelete} onUpdate={onUpdate}></BtnsPanel>
+       <BtnsPanel cmp={cmp} onShift={onShift} onChangeBcColor={onChangeBcColor} onShift={onShift} onDelete={onDelete} onUpdate={onUpdate}></BtnsPanel>
       </div>
 
     </React.Fragment>)
